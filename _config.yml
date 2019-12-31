@@ -301,7 +301,7 @@ defaults:
       author_profile: true
   # _recipes
   - scope:
-      path: ""
+      path: "_recipes"
       type: recipes
     values:
       layout: single
@@ -309,7 +309,7 @@ defaults:
       share: true
   # _pets
   - scope:
-      path: ""
+      path: "_pets"
       type: pets
     values:
       layout: single
@@ -317,7 +317,7 @@ defaults:
       share: true
   # _portfolio
   - scope:
-      path: ""
+      path: "_portfolio"
       type: portfolio
     values:
       layout: single
