@@ -292,3 +292,5 @@ defaults:
       comments: # true
       share: true
       related: true
+      
+remote_theme : mmistakes/minimal-mistakes
