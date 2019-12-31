@@ -293,4 +293,21 @@ defaults:
       share: true
       related: true
       
+main:
+  - title: "Quick-Start Guide"
+    url: /_study/
+  - title: "Posts"
+    url: /year-archive/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "Pages"
+    url: /page-archive/
+  - title: "Collections"
+    url: /collection-archive/
+  - title: "External Link"
+    url: https://google.com
+
+
 remote_theme : mmistakes/minimal-mistakes
