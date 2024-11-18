@@ -7,3 +7,10 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// custom CSS here
+$global-font-family: 'Comic Sans';
+$header-font-family: 'Comic Sans';
+$caption-font-family: 'Comic Sans';
+
+body { background: red; }
