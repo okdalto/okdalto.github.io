@@ -324,4 +324,6 @@ defaults:
       author_profile: false
       share: true
       
-remote_theme : mmistakes/minimal-mistakes
+# remote_theme : mmistakes/minimal-mistakes
+
+theme: minimal-mistakes
