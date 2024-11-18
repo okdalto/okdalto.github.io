@@ -326,4 +326,4 @@ defaults:
       
 # remote_theme : mmistakes/minimal-mistakes
 
-theme: minimal-mistakes
+theme: minimal-mistakes-jekyll
