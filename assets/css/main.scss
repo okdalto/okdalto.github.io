@@ -3,16 +3,14 @@
 search: false
 ---
 
-$type-size-1 : 2em;      // ~32px
-$type-size-2 : 1.5em;    // ~24px
-$type-size-3 : 1.25em;   // ~20px
-$type-size-4 : 1.125em;  // ~18px
-$type-size-5 : 1em;      // ~16px (기본 크기)
-$type-size-6 : 0.875em;  // ~14px
-$type-size-7 : 0.75em;   // ~12px
-$type-size-8 : 0.625em;  // ~10px
-
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// custom CSS here
+$global-font-family: 'Comic Sans';
+$header-font-family: 'Comic Sans';
+$caption-font-family: 'Comic Sans';
+
+body { background: red; }
