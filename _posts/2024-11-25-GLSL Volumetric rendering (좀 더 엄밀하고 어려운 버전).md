@@ -178,9 +178,11 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 반대로, $g < 0$의 경우엔 Backward scattering이 우세하다고 볼 수 있다.
 
 ![이미지](http://www.philiplaven.com/r10-Perp-Polar-LogA.gif)
+
 *붉은 파장 ($λ=0.65 μm$) 영역에서의 Mie scattering phase function. 딱 봐도 복잡해 보인다.*
 
 ![이미지](https://pbr-book.org/4ed/Volume_Scattering/pha11f14.svg)
+
 *파라미터 $g$에 따른 Henyey-Greenstein phase function. 딱 봐도 훨씬 단순해 보인다.*
 
 ## Volumetric rendering의 구현 ##
