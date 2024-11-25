@@ -76,7 +76,7 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
-*NeRF 논문에서 등장하는 Ray Integration 식*
+*NeRF 논문에서 등장하는 Ray Integration*
 
 ## Scattering ##
 
