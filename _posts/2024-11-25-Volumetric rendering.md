@@ -7,7 +7,9 @@ tags:
   - rendering
 ---
 
-일반적으로 렌더링이라고 하면 많은 사람들은 폴리곤 기반의 모델을 떠올린다. 
+물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
+일반적인 방법은 Polygon을 이용한 Representarion이다.
+
 이 방식은 물체의 형태를 정의하는 데 효과적이지만, 다음과 같은 이유로 볼륨 형태의 물체를 표현하는 데는 부적합하다.
 
 1. 폴리곤 렌더링은 주로 물체의 외곽 경계를 정의하며, 내부의 밀도나 상태 변화는 표현할 수 없다. 
@@ -20,13 +22,8 @@ tags:
 그러나 볼륨 형태의 물체는 빛이 내부를 통과하며 흡수, 산란, 굴절되는 복잡한 상호작용을 수반한다. 
 이러한 과정을 폴리곤으로 시뮬레이션하기에는 근본적인 제약이 따른다.
 
-이러한 복잡한 형태와 밀도 분포를 정확히 표현하기 위해 Volumetric rendering이 필요하다.
-
-## 볼륨 렌더링이란? ##
-
-물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
-일반적인 방법은 Polygon을 이용한 Representarion이지만, Voxel이나 Splat, SDF, Neural volume 등 여러 Representation이 존재한다. 
-볼륨 렌더링에서도 여러 Representarion을 사용할 수 있겠으나, 본 예제에서는 Voxel representation을 사용한다. 
+그러나, Representation에는 Polygon만 있는 것이 아니다. Voxel이나 Splat, SDF, Neural volume 등 다양한 Representation이 존재한다. 
+볼륨 렌더링에서도 여러 Representarion을 사용할 수 있겠으나, 본 예제에서는 Voxel representation을 사용할 것이다.
 Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조를 의미한다. 마인크래프트를 생각하면 좋다. 
 각 Voxel은 물리적 특성(예: 밀도, 색상, 투명도 등)을 나타내며, 이는 물체 내부의 복잡한 상태를 표현하는 데 적합하다. 
 이 Representation을 기반으로, 공간 내의 모든 데이터가 빛과 어떻게 상호작용하는지를 계산하여 화면에 시각화하는 방법을 알아보자.
@@ -58,12 +55,17 @@ $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
 ## Ray Marching ##
 
-위 적분식은 Analytic한 해를 얻는 것이 거의 불가능하다. 
+Ray Integration의 Analytic한 해를 얻는 것은 거의 불가능하다. 
 우리의 목표는 물리적으로 정확하진 않더라도 그럴 듯한 결과물을 실시간으로 렌더하는 것이고, 따라서 위 적분식을 Riemann sum으로 근사해서 구현하기 위해 Ray marching이 사용된다. 
 이는 Nelson Max가 1995년에 발표한 논문 'Optical Models for Direct Volume Rendering'에서 처음 소개되었다.
 Ray marching은 말 그대로 광선이 카메라에서 출발해서 화면 안으로 일정 Step만큼 '행진하는' 것이라 상상하면 된다. 
 카메라에서 출발한 광선이 3D 공간을 일정 간격으로 샘플링하며, 매질의 속성을 누적하는 것이다. 
-이 과정에서 각 지점의 밀도와 색상 값을 합산하여 최종적으로 픽셀의 색상을 결정한다. 
+이 과정에서 각 지점의 밀도와 색상 값을 합산하여 최종적으로 픽셀의 색상을 결정한다.
+이를 식으로 표현하면 다음과 같다.
+
+$$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
+
+여기에서 $\Delta t = \frac{t_{\text{far}} - t_{\text{near}}}{M}$ 는 샘플링 간격, $t_k = t_{\text{near}} + k \cdot \Delta t$는 $k$ 번째 샘플링 지점, $M$ 은 이산화된 샘플링 개수를 나타낸다.
 
 ## NeRF ##
 
@@ -94,7 +96,7 @@ $$C(t) = \int_{t_{\text{near}}}^{t_{\text{far}}} T(t) \cdot \sigma(t) \cdot \lef
 
 일반적으로 $L_{\text{ext}}$를 나타내기 위해서는 아래와 같이 모든 방향에서 들어오는 빛을 고려해야 한다.
 
-$$L_{\text{ext}}(t_i) = \int_{\Omega} I(\omega) \cdot p(\omega, t_i) \, d\omega$$
+$$L_{\text{ext}}(t) = \int_{\Omega} T(t) \cdot I(\omega) \cdot p(\omega, t) \, d\omega$$
 
 그러나, 이는 계산 비용이 매우 높기 때문에, 우리는 딱 하나의 방향($\omega$)만을 고려할 것이다.
 
@@ -152,6 +154,7 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 ## Volumetric rendering의 구현 ##
 
 다음은 위에서 설명한 내용으로 GLSL로 구현된 Volume rendering의 예제이다. 
+본 코드가 어떻게 동작하는지는 [Shadertoy](https://www.shadertoy.com/view/MfKcWc)에서 확인할 수 있다.
 
 ```glsl
 #define FOWARD 0.8 // 전방 산란 계수
@@ -271,4 +274,131 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     col = pow(col, vec3(1.0 / 2.2)); // 감마 보정
     fragColor = vec4(col, 1.0); // 최종 색상 출력
 }
+```
+
+만약 TouchDesigner에서 구현한다면, 다음과 같을 것이다.
+
+
+```
+#define FOWARD 0.8 // 전방 산란 계수
+#define BACKWARD -0.2 // 후방 산란 계수
+#define RAY_ITER 120 // Ray marching 반복 횟수
+#define LIGHT_ITER 16 // 조명 계산 샘플 반복 횟수
+#define LIGHT_ATTEN 64.0 // 빛 감쇠 계수
+#define RAY_STEP_SIZE 0.01 // Ray marching 단계 크기
+
+uniform float iTime;
+
+out vec4 fragColor;
+
+// 축 회전을 위한 함수
+void rotate(inout vec3 z, vec3 axis, float angle) {
+    float s = sin(angle);
+    float c = cos(angle);
+    // 축 회전을 위한 회전 행렬 계산
+    mat3 rot = mat3(
+        c + axis.x * axis.x * (1.0 - c),       axis.x * axis.y * (1.0 - c) - axis.z * s, axis.x * axis.z * (1.0 - c) + axis.y * s,
+        axis.y * axis.x * (1.0 - c) + axis.z * s, c + axis.y * axis.y * (1.0 - c),       axis.y * axis.z * (1.0 - c) - axis.x * s,
+        axis.z * axis.x * (1.0 - c) - axis.y * s, axis.z * axis.y * (1.0 - c) + axis.x * s, c + axis.z * axis.z * (1.0 - c)
+    );
+    z = rot * z; // 벡터에 회전 적용
+}
+
+// 절차적 프랙탈 형태를 계산하는 함수
+float fractal(vec3 p) {
+    for (int i = 0; i < 8; i++) {
+        // 시간에 따라 회전하는 프랙탈
+        rotate(p, vec3(1.0, 0.0, 0.0), iTime * 0.2);
+        rotate(p, vec3(0.0, 1.0, 0.0), iTime * 0.1);
+        // 반사 대칭
+        if (p.x + p.y < 0.0) p.xy = -p.yx;
+        if (p.y + p.z < 0.0) p.yz = -p.zy;
+        if (p.z + p.x < 0.0) p.zx = -p.xz;
+        p -= 0.06; // 축소 및 이동
+    }
+    return length(p) - 0.15; // 최종 거리 계산
+}
+
+// SDF(거리 함수)로 프랙탈 활용
+float sdf(vec3 p) {
+    return fractal(p);
+}
+
+// Henyey-Greenstein Phase Function
+float HenyeyGreenstein(float sundotrd, float g) {
+    float gg = g * g;
+    return (1. - gg) / pow(1. + gg - 2. * g * sundotrd, 1.5);
+}
+
+// 산란 계산 (전방 및 후방 산란 혼합)
+float getScattering(float sundotrd) {
+    return mix(HenyeyGreenstein(sundotrd, FOWARD), HenyeyGreenstein(sundotrd, BACKWARD), 0.5);
+}
+
+// 밀도 샘플링 (절차적 밀도 생성)
+float sampleDensity(vec3 p) {
+    return pow(max(-sdf(p), 0.0), 1.3) * 10.0; // SDF 기반 밀도 및 증폭
+}
+
+// 빛의 위치를 Lissajous 곡선으로 계산
+vec3 lightPosLissajous(float t) {
+    float A = 1.5;  // x축 진폭
+    float B = 1.2;  // y축 진폭
+    float C = 1.1;  // z축 진폭
+    float a = 3.1;  // x축 주파수
+    float b = 2.2;  // y축 주파수
+    float c = 4.3;  // z축 주파수
+    float delta = 0.2; // 위상 차이
+
+    float x = A * sin(a * t + delta);
+    float y = B * sin(b * t);
+    float z = C * sin(c * t);
+
+    return vec3(x, y, z); // 빛의 동적 위치 반환
+}
+
+// 메인 렌더링 함수
+void main() {
+    // 정규화된 픽셀 좌표 [-1, 1]
+    uv = (vUV.st - 0.5) * 2.0;
+
+    vec3 col = vec3(0.0); // 초기 색상 값
+
+    vec3 camPos = vec3(0.0, 0.0, -2.0); // 카메라 위치
+    vec3 rayPos = camPos; // 광선 시작점
+    vec3 rayDir = normalize(vec3(uv, 0.0) - camPos); // 광선 방향
+    float time = iTime * 0.2; // 동적 시간
+    vec3 lightPos = lightPosLissajous(time); // 빛의 위치 계산
+
+    float transmittance = 1.0; // 초기 투과도
+
+    rayPos += rayDir; // 광선 이동 시작
+    for (int i = 0; i < RAY_ITER; i++) {
+        rayPos += rayDir * RAY_STEP_SIZE; // 광선 전진
+        float density = sampleDensity(rayPos); // 현재 위치의 밀도 계산
+        if (density <= 0.0) {
+            continue; // 밀도가 없으면 다음 반복
+        }
+        vec3 lightDir = lightPos - rayPos; // 빛 방향
+        float lightDistance = length(lightDir); // 빛 거리
+        lightDir = lightDir / lightDistance; // 단위 벡터로 정규화
+        float lightStep = lightDistance / float(LIGHT_ITER); // 조명 단계 크기
+        float sundotrd = dot(rayDir, -lightDir); // 광선과 빛 방향의 내적
+        float scattering = getScattering(sundotrd); // 산란 계산
+        vec3 lightRayPos = rayPos; // 그림자 계산용 광선 위치
+        float shadowDensity = 0.0; // 그림자 밀도 초기화
+        for (int j = 0; j < LIGHT_ITER; j++) {
+            shadowDensity += sampleDensity(lightRayPos) * lightStep; // 그림자 밀도 누적
+            lightRayPos += lightDir * lightStep; // 빛 방향으로 전진
+        }
+        vec3 externalLight = vec3(exp(-shadowDensity * LIGHT_ATTEN) * scattering); // 외부 빛 계산
+        col += transmittance * externalLight * density; // 누적된 색상
+        transmittance *= exp(-density * RAY_STEP_SIZE * LIGHT_ATTEN); // 투과도 갱신
+        if (transmittance < 0.01) break; // 투과도가 낮으면 조기 종료
+    }
+
+    col = pow(col, vec3(1.0 / 2.2)); // 감마 보정
+    fragColor = TDOutputSwizzle(vec4(col, 1.0));
+}
+
 ```
