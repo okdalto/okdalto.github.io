@@ -124,10 +124,11 @@ $$C(t) = \int_{t_{\text{near}}}^{t_{\text{far}}} T(t) \cdot \sigma(t) \cdot \lef
 $$L_{\text{ext}}(t) = \int_{\Omega} T(t) \cdot I(\omega) \cdot p(\omega, t) \, d\omega$$
 
 그러나, 이는 계산 비용이 매우 높기 때문에 우리는 딱 하나의 방향($\omega$)만을 고려할 것이다.
+이를 리만 합으로 나타내면,
 
 $$L_{\text{ext}}(t) \approx \Delta s \cdot \sum_{k=0}^{M-1} T(s_k) \cdot \sigma(s_k) \cdot I(\omega_d) \cdot p(\omega_d, s_k)$$
 
-각 변수들의 의미는 다음과 같다.
+이며, 각 변수들의 의미는 다음과 같다.
 
 $M$: 샘플링 횟수
 
