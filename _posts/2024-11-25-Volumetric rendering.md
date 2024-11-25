@@ -1,12 +1,10 @@
 ---
 title: "Volumetric rendering"
-date: 2024-11-25T11:34:30+09:00
+date: 2024-11-25T10:34:30+09:00
 categories:
   - 작업
 tags:
-  - 우원재
-  - face swap
-  - 딥 러닝
+  - rendering
 ---
 
 # Volumetric rendering #
