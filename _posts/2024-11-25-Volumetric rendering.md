@@ -1,5 +1,5 @@
 ---
-title: "Volumetric rendering"
+title: "GLSL Volumetric rendering"
 date: 2024-11-25T10:34:30+09:00
 categories:
   - 작업
@@ -23,7 +23,7 @@ tags:
 이러한 과정을 폴리곤으로 시뮬레이션하기에는 근본적인 제약이 따른다.
 
 그러나, Representation에는 Polygon만 있는 것이 아니다. Voxel이나 Splat, SDF, Neural volume 등 다양한 Representation이 존재한다. 
-볼륨 렌더링에서도 여러 Representarion을 사용할 수 있겠으나, 본 예제에서는 Voxel representation을 사용할 것이다.
+볼륨 렌더링에서도 여러 Representation을 사용할 수 있겠으나, 본 예제에서는 Voxel representation을 사용할 것이다.
 Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조를 의미한다. 마인크래프트를 생각하면 좋다. 
 각 Voxel은 물리적 특성(예: 밀도, 색상, 투명도 등)을 나타내며, 이는 물체 내부의 복잡한 상태를 표현하는 데 적합하다. 
 이 Representation을 기반으로, 공간 내의 모든 데이터가 빛과 어떻게 상호작용하는지를 계산하여 화면에 시각화하는 방법을 알아보자.
@@ -39,11 +39,11 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 
 $$C(t) = \int_{t_{near}}^{t_{far}} T(t) \cdot \sigma(t) \cdot c(t) \, dt$$
 
-여기에서 $C(t)$는 $t$ 시점에서의 광선의 누적 색상, $\sigma(t)$는 산란계수(Scattering coefficient), $c(t)$는 색상을 나타낸다. 
+여기에서 $C(t)$는 $t$ 까지 광선의 누적 색상, $\sigma(t)$는 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합, $c(t)$는 매질의 고유 색상을 나타낸다. 
 
 이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
 
-$T(t)$는 투과도(transmittance)로, 물체를 통과하는 동안 빛이 얼마나 흡수되는지를 나타내는데, 다음과 같이 정의된다.
+$T(t)$는 투과도(transmittance)로, 물체를 통과하는 동안 빛의 강도가 약화되는 정도를 설명하는데, 다음과 같이 정의된다.
 
 $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
@@ -73,9 +73,7 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
-<div style="text-align: center;">
 *NeRF 논문에서 등장하는 Ray Integration 식*
-</div>
 
 ## Scattering ##
 
@@ -104,7 +102,7 @@ $$C(t) = \int_{t_{\text{near}}}^{t_{\text{far}}} T(t) \cdot \sigma(t) \cdot \lef
 
 $$L_{\text{ext}}(t) = \int_{\Omega} T(t) \cdot I(\omega) \cdot p(\omega, t) \, d\omega$$
 
-그러나, 이는 계산 비용이 매우 높기 때문에, 우리는 딱 하나의 방향($\omega$)만을 고려할 것이다.
+그러나, 이는 계산 비용이 매우 높기 때문에 우리는 딱 하나의 방향($\omega$)만을 고려할 것이다.
 
 $$L_{\text{ext}}(t) \approx \Delta s \cdot \sum_{k=0}^{M-1} T(s_k) \cdot \sigma(s_k) \cdot I(\omega_d) \cdot p(\omega_d, s_k)$$
 
@@ -163,9 +161,7 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 본 코드가 어떻게 동작하는지는 [Shadertoy](https://www.shadertoy.com/view/MfKcWc)에서 확인할 수 있다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/cloud.jpg?raw=true)
-*<div style="text-align: center;">
-Shadertoy 예제
-</div>*
+*Shadertoy 예제*
 
 
 ```glsl
