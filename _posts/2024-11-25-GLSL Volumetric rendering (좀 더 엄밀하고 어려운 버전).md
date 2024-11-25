@@ -297,7 +297,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 만약 TouchDesigner에서 구현한다면, 다음과 같을 것이다.
 
 
-```
+```glsl
 #define FOWARD 0.8 // 전방 산란 계수
 #define BACKWARD -0.2 // 후방 산란 계수
 #define RAY_ITER 120 // Ray marching 반복 횟수
