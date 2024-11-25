@@ -82,6 +82,12 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 
 여기에서 $\Delta t = \frac{t_{\text{far}} - t_{\text{near}}}{M}$ 는 샘플링 간격, $t_k = t_{\text{near}} + k \cdot \Delta t$는 $k$ 번째 샘플링 지점, $M$ 은 이산화된 샘플링 개수를 나타낸다.
 
+마찬가지로 $T(t)$ 또한 리만 합으로 근사가 가능하다
+
+$$T(t) \approx \exp\left(-\Delta s \sum_{i=1}^{N} \sigma\left(t_{\text{near}} + (i - 1)\Delta s\right)\right)$$
+
+여기서 $\Delta s = \frac{t - t_{\text{near}}}{N}$ 이다.
+
 ## NeRF ##
 
 사족을 달자면 [NeRF 논문](https://arxiv.org/abs/2003.08934)을 들여다보면 동일한 Ray integration 식이 등장하는 것을 확인할 수 있다. 
