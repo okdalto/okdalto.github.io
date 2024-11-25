@@ -73,7 +73,9 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
+<div style="text-align: center;">
 *NeRF 논문에서 등장하는 Ray Integration 식*
+</div>
 
 ## Scattering ##
 
@@ -160,7 +162,9 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 본 코드가 어떻게 동작하는지는 [Shadertoy](https://www.shadertoy.com/view/MfKcWc)에서 확인할 수 있다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/cloud.jpg?raw=true)
+<div style="text-align: center;">
 *Shadertoy 예제*
+</div>
 
 ```glsl
 #define FOWARD 0.8 // 전방 산란 계수
