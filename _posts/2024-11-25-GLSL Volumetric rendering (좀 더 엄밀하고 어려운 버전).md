@@ -12,6 +12,8 @@ tags:
 - 좀 더 친절하고 쉬운 버전은 [여기](https://okdalto.github.io/%EC%9E%91%EC%97%85/GLSL-Volumetric-rendering-(%EC%A2%80-%EB%8D%94-%EC%B9%9C%EC%A0%88%ED%95%98%EA%B3%A0-%EC%89%AC%EC%9A%B4-%EB%B2%84%EC%A0%84)/)를 참고하세요
 
 
+## 물체를 표현하는 방법: Polygon과 Voxel Representation ##
+
 물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
 일반적인 방법은 Polygon을 이용한 Representation이다.
 
