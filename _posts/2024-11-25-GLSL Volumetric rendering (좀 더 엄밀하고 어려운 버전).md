@@ -131,13 +131,13 @@ $s_k$: 샘플링 지점
 
 $T(s_k)$: 투과도
 
-$\sigma(s_k)$: 매질의 흡수계수
+$\sigma(s_k)$: 흡수와 산란의 총합.
 
 $I(\omega_d)$: $\omega_d$ 방향에서의 빛의 세기
 
 $p(\omega_d, s_k)$: 샘플 지점 $s_k$에서 $\omega_d$으로 빛이 산란되는 확률을 나타내는 Phase Function
 
-사실, 이것은 외부 조명을 고려하지 않은 C(t)를 구하는 것과 거의 유사하다. Phase function만 빼고.
+사실, 이것은 외부 조명을 고려하지 않은 $C(t)$를 구하는 것과 거의 유사하다. Phase function만 빼고.
 
 ## Phase function ##
 
