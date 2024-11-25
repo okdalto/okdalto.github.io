@@ -35,20 +35,21 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 
 광원에서 발사된 빛은 3D 공간 내에서 광선(ray) 형태로 이동하며 매질과 상호작용한다. 
 이 과정은 광선 적분이라는 방정식을 통해 계산된다.
-이는 1984년에 Siggraph에서 James T. Kajiya가 발표한 논문, 'Ray Tracing Volume Densities'에서 처음 소개되었다.
+이는 1984년에 Siggraph에서 James T. Kajiya가 발표한 논문, [Ray Tracing Volume Densities](https://dl.acm.org/doi/pdf/10.1145/800031.808594)에서 처음 소개되었다.
 광선 적분은 빛이 물체 내부를 통과하면서 축적되는 색상과 밝기(에너지)를 계산하며, 매질의 흡수(Absorption), 산란(Scattering), 방출(Emission) 효과를 반영한다. 다만 본 예제에서 우리는 Emission을 고려하지 않는다.
 
 $$C(t) = \int_{t_{near}}^{t_{far}} T(t) \cdot \sigma(t) \cdot c(t) \, dt$$
 
 각 변수 및 함수의 의미는 다음과 같다. 
 
-$C(t)$: $t$ 까지 광선의 누적 색상
+$C(t)$: 최종적으로 얻어지는 광선의 색상 또는 밝기(에너지). 이는 광선 적분 결과로, 매질을 통과한 광선이 얼마나 축적되었는지 나타낸다.
 
-$\sigma(t)$: 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합
+$\sigma(t)$: 흡수와 산란의 총합.
 
-$c(t)$: 매질의 고유 색상. 
+$c(t)$: 매질의 고유 색상(Color) 및 강도(Intensity) 정보. 특정 지점에서 매질이 가진 고유한 색과 밝기를 나타내며, 광선 적분에 기여한다.
 
-이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
+$t_{near}$, $t_{far}$: 광선이 매질과 교차하는 시작점과 끝점.
+광선 적분은 광원이 발사한 빛이 매질과 처음 만나기 시작한 지점 $t_{near}$ 에서 매질을 통과하며 끝나는 지점 $t_{far}$ 까지 수행된다.
 
 $T(t)$는 투과도(transmittance)로, 물체를 통과하는 동안 빛의 강도가 약화되는 정도를 설명하는데, 다음과 같이 정의된다.
 
@@ -60,7 +61,8 @@ $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
 Ray Integration의 Analytic한 해를 얻는 것은 거의 불가능하다. 
 우리의 목표는 물리적으로 정확하진 않더라도 그럴 듯한 결과물을 실시간으로 렌더하는 것이고, 따라서 위 적분식을 Riemann sum으로 근사해서 구현하기 위해 Ray marching이 사용된다. 
-이는 Nelson Max가 1995년에 발표한 논문 'Optical Models for Direct Volume Rendering'에서 처음 소개되었다.
+Ray Integration의 Riemann sum 근사는 Nelson Max가 1995년에 발표한 논문 [Optical Models for Direct Volume Rendering](https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf)에서 처음 소개되었다.
+
 Ray marching은 말 그대로 광선이 카메라에서 출발해서 화면 안으로 일정 Step만큼 '행진하는' 것이라 상상하면 된다. 
 카메라에서 출발한 광선이 3D 공간을 일정 간격으로 샘플링하며, 매질의 속성을 누적하는 것이다. 
 이 과정에서 각 지점의 밀도와 색상 값을 합산하여 최종적으로 픽셀의 색상을 결정한다.
@@ -72,7 +74,7 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 
 ## NeRF ##
 
-사족을 달자면 NeRF 논문을 들여다보면 동일한 Ray integration 식이 등장하는 것을 확인할 수 있다. 
+사족을 달자면 [NeRF 논문](https://arxiv.org/abs/2003.08934)을 들여다보면 동일한 Ray integration 식이 등장하는 것을 확인할 수 있다. 
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
