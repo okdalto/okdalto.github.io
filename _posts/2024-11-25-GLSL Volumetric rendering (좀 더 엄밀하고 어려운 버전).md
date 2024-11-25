@@ -1,10 +1,12 @@
 ---
-title: "GLSL Volumetric rendering"
+title: "GLSL Volumetric rendering (좀 더 엄밀하고 어려운 버전)"
 date: 2024-11-25T10:34:30+09:00
 categories:
   - 작업
 tags:
   - rendering
+  - volumetric
+  - cloud
 ---
 
 물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
