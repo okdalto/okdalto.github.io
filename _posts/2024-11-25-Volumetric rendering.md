@@ -8,7 +8,7 @@ tags:
 ---
 
 물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
-일반적인 방법은 Polygon을 이용한 Representarion이다.
+일반적인 방법은 Polygon을 이용한 Representation이다.
 
 이 방식은 물체의 형태를 정의하는 데 효과적이지만, 다음과 같은 이유로 볼륨 형태의 물체를 표현하는 데는 부적합하다.
 
@@ -71,6 +71,9 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 
 사족을 달자면 NeRF 논문을 들여다보면 동일한 Ray integration 식이 등장하는 것을 확인할 수 있다. 
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
+
+![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
+*NeRF 논문에서 등장하는 Ray Integration 식*
 
 ## Scattering ##
 
@@ -155,6 +158,9 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 
 다음은 위에서 설명한 내용으로 GLSL로 구현된 Volume rendering의 예제이다. 
 본 코드가 어떻게 동작하는지는 [Shadertoy](https://www.shadertoy.com/view/MfKcWc)에서 확인할 수 있다.
+
+![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/cloud.jpg?raw=true)
+*Shadertoy 예제*
 
 ```glsl
 #define FOWARD 0.8 // 전방 산란 계수
