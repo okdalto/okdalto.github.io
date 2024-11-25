@@ -12,7 +12,7 @@ tags:
 - 좀 더 친절하고 쉬운 버전은 [여기](https://okdalto.github.io/%EC%9E%91%EC%97%85/GLSL-Volumetric-rendering-(%EC%A2%80-%EB%8D%94-%EC%B9%9C%EC%A0%88%ED%95%98%EA%B3%A0-%EC%89%AC%EC%9A%B4-%EB%B2%84%EC%A0%84)/)를 참고하세요
 
 
-## 물체를 표현하는 방법: Polygon과 Voxel Representation ##
+## 물체를 표현하는 방법: Polygon과 Voxel representation ##
 
 물체를 렌더하기 위해서는 물체를 어떻게 표현할 것인지 그 표현(Representation) 방법에 대해서 고려해야만 한다. 
 일반적인 방법은 Polygon을 이용한 Representation이다.
@@ -39,7 +39,7 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/3D_representations.jpg?raw=true)
 *다양한 Shape representation. 좌측 위부터 시계방향으로 SDF, Voxel, Polygon, Splat.*
 
-## 광선 적분(Ray Integration) ##
+## 광선 적분(Ray integration) ##
 
 광원에서 발사된 빛은 3D 공간 내에서 광선(ray) 형태로 이동하며 매질과 상호작용한다. 
 이 과정은 광선 적분이라는 방정식을 통해 계산된다.
@@ -67,11 +67,11 @@ $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
 위 식은 [Beer-Lambert Law](https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law)의 일반화된 형태이다. 빛은 에너지를 가지고 있다. 빛이 매질(볼륨)을 통과하면서 이 에너지는 흡수되거나 산란된다. 이 중에서 흡수를 설명하는 것이 Beer's law이다. 식을 잘 살펴보면, $t_{\text{near}}$에서 ${t}$까지 빛이 이동했을 때, 누적된 소멸 계수에 따라 빛이 얼마만큼 살아남는지를 나타내는 값이라는 것을 알 수 있다.
 
-## Ray Marching ##
+## Ray marching ##
 
-Ray Integration의 Analytic한 해를 얻는 것은 거의 불가능하다. 
+Ray integration의 Analytic한 해를 얻는 것은 거의 불가능하다. 
 우리의 목표는 물리적으로 정확하진 않더라도 그럴 듯한 결과물을 실시간으로 렌더하는 것이고, 따라서 위 적분식을 Riemann sum으로 근사해서 구현하기 위해 Ray marching이 사용된다. 
-Ray Integration의 Riemann sum 근사는 Nelson Max가 1995년에 발표한 논문 [Optical Models for Direct Volume Rendering](https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf)에서 처음 소개되었다.
+Ray integration의 Riemann sum 근사는 Nelson Max가 1995년에 발표한 논문 [Optical Models for Direct Volume Rendering](https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf)에서 처음 소개되었다.
 
 Ray marching은 말 그대로 광선이 카메라에서 출발해서 화면 안으로 일정 Step만큼 '행진하는' 것이라 상상하면 된다. 
 카메라에서 출발한 광선이 3D 공간을 일정 간격으로 샘플링하며, 매질의 속성을 누적하는 것이다. 
@@ -94,7 +94,7 @@ $$T(t) \approx \exp\left(-\Delta s \sum_{i=1}^{k} \sigma\left(t_{\text{near}} + 
 NeRF 또한 볼륨 샘플링 함수를 뉴럴 네트워크로 대체했을 뿐이지, 여전히 Volume rendering을 다루고 있기 때문이다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/nerf.jpg?raw=true)
-*NeRF 논문에서 등장하는 Ray Integration*
+*NeRF 논문에서 등장하는 Ray integration*
 
 ## Scattering ##
 
@@ -111,7 +111,7 @@ Mie scattering은 Rayleigh scattering과 달리 더 큰 입자(예: 먼지, 연�
 
 ## 외부 빛의 기여 (Direct lighting) ##
 
-Ray Integration에서 우리가 하나 빼먹은 것이 있다. 바로 외부 빛의 기여이다.
+Ray integration에서 우리가 하나 빼먹은 것이 있다. 바로 외부 빛의 기여이다.
 물체의 색상은 물체 자체의 색상과 외부 빛의 색상이 결합된 결과이다.
 따라서 물체의 색상을 계산할 때에는 물체 자체의 색상과 외부 빛의 색상을 모두 고려해야 한다.
 
