@@ -31,6 +31,7 @@ tags:
 
 그러나, Representation에는 Polygon만 있는 것이 아니다. Voxel이나 Splat, SDF, Neural volume 등 다양한 Representation이 존재한다. 
 볼륨 렌더링에서도 여러 Representation을 사용할 수 있겠으나, 본 예제에서는 Voxel representation을 사용할 것이다.
+
 Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조를 의미한다. 마인크래프트를 생각하면 좋다. 
 각 Voxel은 물리적 특성(예: 밀도, 색상, 투명도 등)을 나타내며, 이는 물체 내부의 복잡한 상태를 표현하는 데 적합하다. 
 이 Representation을 기반으로, 공간 내의 모든 데이터가 빛과 어떻게 상호작용하는지를 계산하여 화면에 시각화하는 방법을 알아보자.
@@ -43,7 +44,9 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 광원에서 발사된 빛은 3D 공간 내에서 광선(ray) 형태로 이동하며 매질과 상호작용한다. 
 이 과정은 광선 적분이라는 방정식을 통해 계산된다.
 이는 1984년에 Siggraph에서 James T. Kajiya가 발표한 논문, [Ray Tracing Volume Densities](https://dl.acm.org/doi/pdf/10.1145/800031.808594)에서 처음 소개되었다.
-광선 적분은 빛이 물체 내부를 통과하면서 축적되는 색상과 밝기(에너지)를 계산하며, 매질의 흡수(Absorption), 산란(Scattering), 방출(Emission) 효과를 반영한다. 다만 본 예제에서 우리는 Emission을 고려하지 않는다.
+광선 적분은 빛이 물체 내부를 통과하면서 축적되는 색상과 밝기(에너지)를 계산하며, 매질의 흡수(Absorption), 산란(Scattering), 방출(Emission) 효과를 반영한다. (다만 본 예제에서는 Emission을 고려하지 않는다.)
+
+광선 적분은 아래와 같이 정의된다.
 
 $$C(t) = \int_{t_{near}}^{t_{far}} T(t) \cdot \sigma(t) \cdot c(t) \, dt$$
 
