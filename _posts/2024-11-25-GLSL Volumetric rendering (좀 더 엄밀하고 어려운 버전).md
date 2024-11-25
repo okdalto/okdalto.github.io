@@ -177,7 +177,7 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 
 반대로, $g < 0$의 경우엔 Backward scattering이 우세하다고 볼 수 있다.
 
-![이미지](http://www.philiplaven.com/r10-Perp-Polar-LogA.gif)
+![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/r10-Perp-Polar-LogA.gif?raw=true)
 
 *붉은 파장 ($λ=0.65 μm$) 영역에서의 Mie scattering phase function. 딱 봐도 복잡해 보인다.*
 
