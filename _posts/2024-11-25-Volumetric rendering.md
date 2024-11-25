@@ -28,6 +28,9 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 각 Voxel은 물리적 특성(예: 밀도, 색상, 투명도 등)을 나타내며, 이는 물체 내부의 복잡한 상태를 표현하는 데 적합하다. 
 이 Representation을 기반으로, 공간 내의 모든 데이터가 빛과 어떻게 상호작용하는지를 계산하여 화면에 시각화하는 방법을 알아보자.
 
+![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/3D_representations.jpg?raw=true)
+*다양한 Shape representation. 좌측 위부터 시계방향으로 SDF, Voxel, Polygon, Splat.*
+
 ## 볼륨 렌더링의 기본 원리 ##
 
 ## 광선 적분(Ray Integration) ##
@@ -39,19 +42,13 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 
 $$C(t) = \int_{t_{near}}^{t_{far}} T(t) \cdot \sigma(t) \cdot c(t) \, dt$$
 
-여기에서 $C(t)$는 $t$ 까지 광선의 누적 색상, $\sigma(t)$는 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합, $c(t)$는 매질의 고유 색상을 나타낸다. 
-
-이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
+여기에서 $C(t)$는 $t$ 까지 광선의 누적 색상, $\sigma(t)$는 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합, $c(t)$는 매질의 고유 색상을 나타낸다. 이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
 
 $T(t)$는 투과도(transmittance)로, 물체를 통과하는 동안 빛의 강도가 약화되는 정도를 설명하는데, 다음과 같이 정의된다.
 
 $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
-위 식은 Beer's law의 일반화된 형태이다.
-
-빛은 에너지를 가지고 있다. 빛이 매질(볼륨)을 통과하면서 이 에너지는 흡수되거나 산란된다. 이 중에서 흡수를 설명하는 것이 Beer's law이다. 
-
-식을 잘 살펴보면, $t_{\text{near}}$에서 ${t}$까지 빛이 이동했을 때, 누적된 소멸 계수에 따라 빛이 얼마만큼 살아남는지를 나타내는 값이라는 것을 알 수 있다.
+위 식은 Beer's law의 일반화된 형태이다. 빛은 에너지를 가지고 있다. 빛이 매질(볼륨)을 통과하면서 이 에너지는 흡수되거나 산란된다. 이 중에서 흡수를 설명하는 것이 Beer's law이다. 식을 잘 살펴보면, $t_{\text{near}}$에서 ${t}$까지 빛이 이동했을 때, 누적된 소멸 계수에 따라 빛이 얼마만큼 살아남는지를 나타내는 값이라는 것을 알 수 있다.
 
 ## Ray Marching ##
 
