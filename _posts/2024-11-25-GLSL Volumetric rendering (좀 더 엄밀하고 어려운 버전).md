@@ -86,7 +86,7 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 
 $$T(t) \approx \exp\left(-\Delta s \sum_{i=1}^{k} \sigma\left(t_{\text{near}} + (i - 1)\Delta s\right)\right)$$
 
-여기에서 $\Delta s = \frac{t - t_{\text{near}}}{N}$ 이다.
+여기에서 $\Delta s = \frac{t - t_{\text{near}}}{k}$ 이다.
 
 ## NeRF ##
 
