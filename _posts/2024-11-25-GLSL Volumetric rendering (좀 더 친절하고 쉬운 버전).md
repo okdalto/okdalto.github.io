@@ -57,11 +57,11 @@ tags:
 
 빛은 물체 내부에서 산란됩니다. 쉽게 말하면, 빛이 물체에 부딪힌 후 여러 방향으로 퍼져 나갑니다.
 
-전방 산란(Forward Scattering)
+전방 산란(Forward Scattering):
 빛이 부딪힌 뒤 원래 방향과 비슷하게 나아가는 경우.
 → 구름 속 빛의 투명한 느낌을 만듭니다.
 
-후방 산란(Backward Scattering)
+후방 산란(Backward Scattering):
 빛이 부딪힌 뒤 반대로 튕겨 나오는 경우.
 → 구름의 뭉개진 가장자리 표현에 기여합니다.
 
