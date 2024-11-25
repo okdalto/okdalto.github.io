@@ -299,7 +299,12 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _recipes
+  # Global settings
+  - scope:
+    path: "" # 모든 경로에 적용
+  values:
+    favicon: "/assets/images/favicon.png" # favicon 경로
+# _recipes
   - scope:
       path: ""
       type: recipes
