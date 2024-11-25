@@ -31,8 +31,6 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/3D_representations.jpg?raw=true)
 *다양한 Shape representation. 좌측 위부터 시계방향으로 SDF, Voxel, Polygon, Splat.*
 
-## 볼륨 렌더링의 기본 원리 ##
-
 ## 광선 적분(Ray Integration) ##
 
 광원에서 발사된 빛은 3D 공간 내에서 광선(ray) 형태로 이동하며 매질과 상호작용한다. 
@@ -42,7 +40,15 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 
 $$C(t) = \int_{t_{near}}^{t_{far}} T(t) \cdot \sigma(t) \cdot c(t) \, dt$$
 
-여기에서 $C(t)$는 $t$ 까지 광선의 누적 색상, $\sigma(t)$는 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합, $c(t)$는 매질의 고유 색상을 나타낸다. 이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
+각 변수 및 함수의 의미는 다음과 같다. 
+
+$C(t)$: $t$ 까지 광선의 누적 색상
+
+$\sigma(t)$: 산란 계수(Scattering coefficient)와 흡수 계수(Absorption coefficient)의 합
+
+$c(t)$: 매질의 고유 색상. 
+
+이 식은 광선이 $t_{near}$에서 $t_{far}$까지 통과하는 동안의 색상을 계산한다. 이를 통해 물체 내부의 색상과 밝기를 계산할 수 있다.
 
 $T(t)$는 투과도(transmittance)로, 물체를 통과하는 동안 빛의 강도가 약화되는 정도를 설명하는데, 다음과 같이 정의된다.
 
@@ -87,7 +93,7 @@ Mie scattering은 Rayleigh scattering과 달리 더 큰 입자(예: 먼지, 연�
 
 ## 외부 빛의 기여 (Direct lighting) ##
 
-위 식에서 우리가 하나 빼먹은 것이 있다. 바로 외부 빛의 기여이다.
+Ray Integration에서 우리가 하나 빼먹은 것이 있다. 바로 외부 빛의 기여이다.
 물체의 색상은 물체 자체의 색상과 외부 빛의 색상이 결합된 결과이다.
 따라서 물체의 색상을 계산할 때에는 물체 자체의 색상과 외부 빛의 색상을 모두 고려해야 한다.
 
