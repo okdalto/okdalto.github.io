@@ -163,9 +163,9 @@ $g > 0$의 경우 Forward scattering이 우세하다.
 본 코드가 어떻게 동작하는지는 [Shadertoy](https://www.shadertoy.com/view/MfKcWc)에서 확인할 수 있다.
 
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/cloud.jpg?raw=true)
-<div style="text-align: center;">
-*Shadertoy 예제*
-</div>
+*<div style="text-align: center;">
+Shadertoy 예제
+</div>*
 
 
 ```glsl
