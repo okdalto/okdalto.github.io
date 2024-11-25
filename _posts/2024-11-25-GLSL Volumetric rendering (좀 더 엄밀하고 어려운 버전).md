@@ -152,6 +152,7 @@ Mie scattering의 Phase function은 특히 입자의 크기와 빛의 파장에 
 따라서 Phase function은 빛과 입자의 상호작용을 정확히 모델링하여 구름 내부의 광학적 성질과 시각적 특성을 결정하는 데 중요한 역할을 한다.
 그런데, Mie scattering의 Phase function은 계산하기에 매우 비용이 많이 든다. 
 따라서, 일반적으로는 Mie scattering의 Phase function을 Henyey-Greenstein phase function으로 근사하여 사용한다.
+
 Henyey-Greenstein phase function은 다음과 같이 정의된다.
 
 $$p(\cos\theta) = \frac{1}{4\pi} \cdot \frac{1 - g^2}{(1 + g^2 - 2g\cos\theta)^{3/2}}$$
