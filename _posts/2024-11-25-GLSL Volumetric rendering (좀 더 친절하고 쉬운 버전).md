@@ -9,6 +9,8 @@ tags:
   - cloud
 ---
 
+- 좀 더 엄밀하고 어려운 버전은 [여기](https://okdalto.github.io/%EC%9E%91%EC%97%85/GLSL-Volumetric-rendering-(%EC%A2%80-%EB%8D%94-%EC%97%84%EB%B0%80%ED%95%98%EA%B3%A0-%EC%96%B4%EB%A0%A4%EC%9A%B4-%EB%B2%84%EC%A0%84)/)를 참고하세요
+
 ## 물체를 표현하는 방법: Polygon과 Voxel Representation ##
 
 3D 공간에서 물체를 렌더링하려면 물체를 어떻게 표현할지(Representation)가 중요합니다. 일반적으로 가장 널리 쓰이는 방식은 폴리곤(Polygon) 기반 표현입니다. 폴리곤은 물체의 형태를 정의하는 데 유용하지만, 볼륨 형태의 물체를 표현하는 데는 한계가 있습니다. 그 이유는 다음과 같습니다:
