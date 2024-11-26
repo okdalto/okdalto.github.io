@@ -44,7 +44,7 @@ Voxel은 "Volume"과 "Pixel"의 합성어로, 3D 공간에서의 격자 구조�
 광원에서 발사된 빛은 3D 공간 내에서 광선(ray) 형태로 이동하며 매질과 상호작용한다. 
 이 과정은 광선 적분이라는 방정식을 통해 계산된다.
 이는 1984년에 Siggraph에서 James T. Kajiya가 발표한 논문, [Ray Tracing Volume Densities](https://dl.acm.org/doi/pdf/10.1145/800031.808594)에서 처음 소개되었다.
-광선 적분은 빛이 물체 내부를 통과하면서 축적되는 색상과 밝기(에너지)를 계산하며, 매질의 흡수(Absorption), 산란(Scattering), 방출(Emission) 효과를 반영한다. (다만 본 예제에서는 Emission을 고려하지 않는다.)
+광선 적분은 빛이 물체 내부를 통과하면서 축적되는 색상과 밝기(에너지)를 계산하며, 매질의 흡수(Absorption), 산란(Scattering), 방출(Emission) 효과를 반영한다.
 
 광선 적분은 아래와 같이 정의된다.
 
@@ -70,12 +70,9 @@ $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 ## Ray marching ##
 
 Ray integration의 Analytic한 해를 얻는 것은 거의 불가능하다. 
-우리의 목표는 물리적으로 정확하진 않더라도 그럴 듯한 결과물을 실시간으로 렌더하는 것이고, 따라서 위 적분식을 Riemann sum으로 근사해서 구현하기 위해 Ray marching이 사용된다. 
+우리의 목표는 물리적으로 정확하진 않더라도 그럴 듯한 결과물을 실시간으로 렌더하는 것이고, 따라서 위 적분식을 Riemann sum으로 근사해서 표현할 것이다. 
 Ray integration의 Riemann sum 근사는 Nelson Max가 1995년에 발표한 논문 [Optical Models for Direct Volume Rendering](https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf)에서 처음 소개되었다.
 
-Ray marching은 말 그대로 광선이 카메라에서 출발해서 화면 안으로 일정 Step만큼 '행진하는' 것이라 상상하면 된다. 
-카메라에서 출발한 광선이 3D 공간을 일정 간격으로 샘플링하며, 매질의 속성을 누적하는 것이다. 
-이 과정에서 각 지점의 밀도와 색상 값을 합산하여 최종적으로 픽셀의 색상을 결정한다.
 이를 식으로 표현하면 다음과 같다.
 
 $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
@@ -87,6 +84,11 @@ $$C(t) \approx \Delta t \sum_{k=0}^{M-1} T(t_k) \cdot \sigma(t_k) \cdot c(t_k)$$
 $$T(t) \approx \exp\left(-\Delta s \sum_{i=1}^{k} \sigma\left(t_{\text{near}} + (i - 1)\Delta s\right)\right)$$
 
 여기에서 $\Delta s = \frac{t - t_{\text{near}}}{k}$ 이다.
+
+Riemann sum을 구했으니, 구현은 Ray marching 기법을 이용할 것이다. 
+Ray marching은 말 그대로 광선이 카메라에서 출발해서 화면 안으로 일정 Step만큼 '행진하는' 것이라 상상하면 된다. 
+카메라에서 출발한 광선이 3D 공간을 일정 간격으로 샘플링하며, 매질의 속성을 누적하는 것이다. 
+이 과정에서 각 지점의 밀도와 색상 값을 합산하여 최종적으로 픽셀의 색상을 결정한다.
 
 ## NeRF ##
 
