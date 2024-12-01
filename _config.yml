@@ -331,10 +331,3 @@ defaults:
       
 remote_theme : mmistakes/minimal-mistakes
 
-<script src="https://utteranc.es/client.js"
-        repo="okdalto/okdalto.github.io"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
