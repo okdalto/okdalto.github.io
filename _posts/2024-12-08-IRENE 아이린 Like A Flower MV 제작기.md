@@ -1,6 +1,6 @@
 ---
 title: "아이린 'Like A Flower' 뮤직비디오 VFX 제작기"
-date: 2024-12-08T15:34:30-04:00
+date: 2024-12-08T15:34:30-09:00
 categories:
   - 개발
 tags:
