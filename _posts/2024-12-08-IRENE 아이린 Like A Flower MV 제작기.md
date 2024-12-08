@@ -18,11 +18,11 @@ tags:
 
 한 스튜디오로부터 AI를 활용해 얼굴이 생성되는 영상을 제작해달라는 의뢰를 받았다. 요청 내용을 보아하니 StyleGAN을 이용해 작업해달라는 의도인 것 같다. 사실 StyleGAN은 이미 꽤 오래된 기술이고, 나는 이런 작업을 오래전부터 해왔다. 예를 들면, 수호의 [Lights](https://www.youtube.com/watch?v=aExqq6s2lJ8) 뮤직비디오 작업이 바로 그 대표적인 사례다.
 
-## StyleGAN
+## GAN
 근데, StyleGAN이 뭔가? 이를 이해하려면 먼저 GAN(Generative Adversarial Network)에 대해 알아야 한다. GAN은 생성 모델의 일종으로, 두 개의 신경망인 **생성자(Generator)**와 **판별자(Discriminator)**가 서로 경쟁하며 학습하도록 짜여진 것을 뜻한다. 생성자의 목적 함수는 실제 데이터와 유사한 데이터를 만들어 판별자를 속이는 것이고, 판별자는 그것이 진짜인지 가짜인지 구분하려고 한다. 이 과정을 반복하면서 생성자는 점점 더 정교한 데이터를 만들어내는 생성자를 얻을 수 있다.
 
 ### StyleGAN의 등장
-StyleGAN은 GAN의 구조를 발전시킨 모델로, NVIDIA의 Tero Karras라는 끝내주게 똑똑한 연구자가 제안했다. StyleGAN이 기존의 GAN과 다른 점은 크게 두 가지이다.
+StyleGAN은 GAN의 구조를 발전시킨 모델로, NVIDIA의 Tero Karras라는 끝내주게 똑똑한 연구자가 제안했다. Tero Karras는 StyleGAN 연구 외에도 Facial capture나 Rendering 논문도 쓰는 다재다능한 연구자다. StyleGAN이 기존의 GAN과 다른 점은 크게 두 가지이다.
 
 1. StyleGAN은 기존 GAN에서 사용하던 단순한 입력 노이즈 벡터를 그대로 사용하는 대신, 노이즈를 여러 개의 **다층 퍼셉트론(MLP, Multi-Layer Perceptron)**에 통과시켜 스타일 벡터로 변환한다. 이 스타일 벡터는 각 계층의 "스타일"을 조절하는 역할을 한다. 이를 disentangle이라 부르는데 Gaussian noise space에 정보를 우겨넣어야 했던 기존 방법과 달리 이 과정을 통해 Generator가 좀 더 의미 있는 공간에서 생성을 할 수 있게 된다. 
 
@@ -56,7 +56,7 @@ StyleGAN2는 StyleGAN에서 발견된 몇 가지 한계점을 해결하며 등�
 
 ## 인터페이스
 
-아이린씨가 조작하는 컴퓨터 화면을 제작해달라고 요청받았기 때문에, 영상 외에도 다른 인터페이스를 가져다 붙여야 했다. 찾아보니 우분투 UI는 저작권 문제 없이 사용해도 된다고 했다. 그래서 컴퓨터를 잘 아는 사람들이라면 친숙할, 하지만 일반인에게는 낯설 모습일 우분투 UI를 가져왔다. 영상에는 좌우로 창 두 개가 보이는데, 뭔가 코딩스러운 모습이 필요했다. 그래서 왼쪽 창에는 print 문을 사용해 실제로 StyleGAN 이미지를 뽑을 때의 레이턴트 벡터를 출력했다(자세히 보면 Tensor 인스턴스가 출력되는 걸 확인할 수 있다.). 오른쪽 창은 딥러닝을 하는 사람이라면 누구나 친숙할 nvitop을 출력했다. nvitop은 NVIDIA GPU의 상태를 모니터링하기 위한 도구이다. 
+아이린씨가 조작하는 컴퓨터 화면을 제작해달라고 요청받았기 때문에, 영상 외에도 다른 인터페이스를 가져다 붙여야 했다. 찾아보니 우분투 UI는 저작권 문제 없이 사용해도 된다고 한다. 그래서 컴퓨터를 잘 아는 사람들이라면 친숙할, 하지만 일반인에게는 낯설 모습일 우분투 UI를 가져왔다. 영상에는 좌우로 창 두 개가 보이는데, 뭔가 코딩스러운 모습이 필요했다. 그래서 왼쪽 창에는 print 문을 사용해 실제로 StyleGAN 이미지를 뽑을 때의 레이턴트 벡터를 출력했다(자세히 보면 Tensor 인스턴스가 출력되는 걸 확인할 수 있다.). 오른쪽 창은 딥러닝을 하는 사람이라면 누구나 친숙할 nvitop을 출력했다. nvitop은 NVIDIA GPU의 상태를 모니터링하기 위한 도구이다. 
 
 ## 마무리
 
@@ -64,4 +64,4 @@ StyleGAN 계열 기술은 이미 5년 전의 기술이다. 그런데도 이미�
 
 ---
 
-코드는 [깃헙](https://github.com/okdalto/mv_stylegan)에 올려놓았다. 베이스 모델이 되는 StyleGAN2 코드는 네이버에 계신 또다른 [김성현님의 코드](https://github.com/rosinality/stylegan2-pytorch)를 빌려왔다. 이자리를 빌어 감사드린다.
+코드는 [깃헙](https://github.com/okdalto/mv_stylegan)에 올려놓았다. 베이스 모델이 되는 StyleGAN2 코드는 네이버에 계신 또다른 [김성현님의 코드](https://github.com/rosinality/stylegan2-pytorch)를 빌려왔다. 이 자리를 빌어 감사드린다. 신세 많이 지고 있습니다...
