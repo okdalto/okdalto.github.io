@@ -10,6 +10,8 @@ tags:
 
 <iframe width="992" height="458" src="https://www.youtube.com/embed/KdOF5-h4qpw" title="IRENE 아이린 &#39;Like A Flower&#39; MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+---
+
 한 스튜디오로부터 AI를 활용해 얼굴이 생성되는 영상을 제작해달라는 의뢰를 받았다. 요청 내용을 보아하니 StyleGAN을 이용해 작업해달라는 의도인 것 같다. 사실 StyleGAN은 이미 꽤 오래된 기술이고, 나는 이런 작업을 오래전부터 해왔다. 예를 들면, 수호의 [Lights](https://www.youtube.com/watch?v=aExqq6s2lJ8) 뮤직비디오 작업이 바로 그 대표적인 사례다.
 
 ## StyleGAN
