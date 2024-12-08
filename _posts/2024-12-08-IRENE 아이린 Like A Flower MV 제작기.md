@@ -38,6 +38,8 @@ StyleGAN2는 StyleGAN에서 발견된 몇 가지 한계점을 해결하며 등�
 
 따라서 나는 선형 보간 대신 스플라인을 사용했다. 스플라인의 종류는 아주 많다. 베지어(Bezier), 에르미트(Hermite), 캣멀-롬(Catmull-Rom), 등등. 각각의 스플라인은 각각의 장단점이 있다. 나는 이 중에서 캣멀-롬 스플라인을 선택했다. 위치 값만 인풋으로 줘도 부드럽고 자연스러운 곡선을 생성할 수 있기 때문이다.
 
+![Catmul-Rom Spline](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-12-08-IRENE%20%EC%95%84%EC%9D%B4%EB%A6%B0%20Like%20A%20Flower%20MV%20%EC%A0%9C%EC%9E%91%EA%B8%B0/Catmull-Rom_Spline.png?raw=true)
+
 이 곡선을 따라 위치를 샘플링하고, 그걸 StyleGAN Generator에 입력으로 주면? 짜잔, 부드럽게 얼굴이 변화하는 영상이 만들어진다.
 
 ## W Space Encoding
