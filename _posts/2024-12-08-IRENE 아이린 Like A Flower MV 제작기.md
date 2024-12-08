@@ -44,6 +44,8 @@ StyleGAN2는 StyleGAN에서 발견된 몇 가지 한계점을 해결하며 등�
 
 단순하게는 W값을 최적화(Optimize)하는 방법을 사용해도 되고, [pSp](https://github.com/eladrich/pixel2style2pixel)와 같은 인코더를 사용해도 된다. 나의 경우는 최적화 방법을 선택했는데, 단순 평균제곱오차(MSE) 손실으로는 피팅이 잘 안 되어서, 미리 학습된 [VGG16](https://pytorch.org/vision/main/models/generated/torchvision.models.vgg16.html)을 사용해 Perceptual 손실을 추가했다.
 
+![irene](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-12-08-IRENE%20%EC%95%84%EC%9D%B4%EB%A6%B0%20Like%20A%20Flower%20MV%20%EC%A0%9C%EC%9E%91%EA%B8%B0/irene.jpeg?raw=true)
+
 ## 인터페이스
 
 아이린씨가 조작하는 컴퓨터 화면을 제작해달라고 요청받았기 때문에, 영상 외에도 다른 인터페이스를 가져다 붙여야 했다. 찾아보니 우분투 UI는 저작권 문제 없이 사용해도 된다고 했다. 그래서 컴퓨터를 잘 아는 사람들이라면 친숙할, 하지만 일반인에게는 낯설 모습일 우분투 UI를 가져왔다. 영상에는 좌우로 창 두 개가 보이는데, 뭔가 코딩스러운 모습이 필요했다. 그래서 왼쪽 창에는 print 문을 사용해 실제로 StyleGAN 이미지를 뽑을 때의 레이턴트 벡터를 출력했다(자세히 보면 Tensor 인스턴스가 출력되는 걸 확인할 수 있다.). 오른쪽 창은 딥러닝을 하는 사람이라면 누구나 친숙할 nvitop을 출력했다. nvitop은 NVIDIA GPU의 상태를 모니터링하기 위한 도구이다. 
