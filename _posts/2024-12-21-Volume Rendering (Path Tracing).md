@@ -1,5 +1,5 @@
 ---
-title: "GLSL Volumetric rendering (좀 더 엄밀하고 어려운 버전)"
+title: "Volume Rendering, Path Tracing 버전"
 date: 2024-12-21T10:34:30+09:00
 categories:
   - 작업
@@ -9,12 +9,14 @@ tags:
   - cloud
 ---
 
-## 광선 적분 ##
-
-![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-11-25%20Volumetric%20rendering/3D_representations.jpg?raw=true)
+## Volume Rendering, Path Tracing 버전 ##
 
 이전 글에서 Ray integration을 단순화하여 Ray marching으로 Volume rendering을 구현하는 방법에 대해 다뤘다. 
 해당 구현에서는 단 하나의 방향에서만 들어오는 빛을 가정하였으나, 실제로는 각 Ray step마다 구면의 모든 방향으로 들어오는 빛을 고려하는 것이 좀 더 물리적으로 정확하다 할 수 있겠다.
+
+## 광선 적분 ##
+
+![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-12-21-Volume%20Rendering%20(Path%20Tracing)/volume_rendering.png?raw=true)
 더 자세한 설명을 위해 다시 Ray Integration을 들여다보자. 광선 적분의 일반적인 형태는 다음과 같다.
 
 $$C(t) = \int_{t_{\text{near}}}^{t_{\text{far}}} T(t) \cdot \sigma(t) \cdot \left[c(t) + L_{\text{ext}}(t)\right] \, dt$$
