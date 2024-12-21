@@ -25,10 +25,6 @@ $$C(t) = \int_{t_{\text{near}}}^{t_{\text{far}}} T(t) \cdot \sigma(t) \cdot \lef
 
 $C(t)$: 최종적으로 얻어지는 광선의 색상 또는 밝기(에너지). 이는 광선 적분 결과로, 매질을 통과한 광선이 얼마나 축적되었는지 나타낸다.
 
-$\sigma(t)$: 흡수와 산란의 총합.
-
-$c(t)$: 매질의 고유 색상(Color) 및 강도(Intensity) 정보. 특정 지점에서 매질이 가진 고유한 색과 밝기를 나타내며, 광선 적분에 기여한다.
-
 $t_{near}$, $t_{far}$: 광선이 매질과 교차하는 시작점과 끝점.
 광선 적분은 광원이 발사한 빛이 매질과 처음 만나기 시작한 지점 $t_{near}$ 에서 매질을 통과하며 끝나는 지점 $t_{far}$ 까지 수행된다.
 
@@ -38,6 +34,10 @@ $$T(t) = \exp\left(-\int_{t_{\text{near}}}^{t} \sigma(s) \, ds\right)$$
 
 위 식은 [Beer-Lambert Law](https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law)의 일반화된 형태이다. 빛은 에너지를 가지고 있다. 빛이 매질(볼륨)을 통과하면서 이 에너지는 흡수되거나 산란된다. 이 중에서 흡수를 설명하는 것이 Beer's law이다. 식을 잘 살펴보면, $t_{\text{near}}$에서 ${t}$까지 빛이 이동했을 때, 누적된 소멸 계수에 따라 빛이 얼마만큼 살아남는지를 나타내는 값이라는 것을 알 수 있다.
 
+$\sigma(t)$: 흡수와 산란의 총합.
+
+$c(t)$: 매질의 고유 색상(Color) 및 강도(Intensity) 정보. 특정 지점에서 매질이 가진 고유한 색과 밝기를 나타내며, 광선 적분에 기여한다.
+
 일반적으로 $L_{\text{ext}}$를 나타내기 위해서는 아래와 같이 모든 방향에서 들어오는 빛을 고려해야 한다.
 
 $$L_{\text{ext}}(t) = \int_{\Omega} T(t) \cdot I(\omega) \cdot p(\omega, t) \, d\omega$$
@@ -45,10 +45,10 @@ $$L_{\text{ext}}(t) = \int_{\Omega} T(t) \cdot I(\omega) \cdot p(\omega, t) \, d
 ## 이전의 방법과 차이점 ##
 
 코드에서 구현된 Ray Integration은 주어진 수식을 이산 형태(Discrete Form)로 근사하여 계산한다. 
-여러 가지 기능이 구현되어 있지만, 이전 구현과의 차이는 간단하다. 
+여러 가지 기능이 추가되었지만, 이전 구현과의 차이는 간단하다. 
 외부에서 들어오는 빛을 단일 방향으로 근사하는 것이 아니라, 실제 물리적 성질을 바탕으로 빛이 여러 방향으로 반사/굴절되는 현상을 시뮬레이션하는 것이다.
 
-따라서 나는 매 step마다 각 ray에서 빛을 발사하고, 그 빛이 확률적으로 다른 곳으로 Scattering하도록 만들었다.
+이를 위해 나는 매 step마다 각 ray에서 빛을 발사하고, 그 빛이 확률적으로 다른 곳으로 Scattering하도록 만들었다.
 산란 확률은 Beer's law에 따라서 아래와 같이 결정된다.
 
 $$P(\text{scatter}) = 1.0 - e^{-\sigma_s \cdot \Delta x}$$
@@ -65,6 +65,16 @@ Scattering확률을 구하고, 만약 Scattering한다고 결정된다면, 그 �
 그 방식은 좀 복잡한데 먼저 코드를 살펴보면 다음과 같다.
 
 
+```glsl
+
+// sampleHenyeyGreenstein의 사용
+
+float shadowScatterProbability = calculateScatterProbability(shadowDensity, LIGHT_STEP);
+if (shadowScatterProbability > randomFloat01(rngState)) {
+    lightDir = sampleHenyeyGreenstein(lightDir, 0.6, rngState);
+}
+
+```
 ```glsl
 
 float samplePhi(float xi2) {
@@ -124,17 +134,6 @@ float rand(vec2 n) {
 
 ```
 
-sampleHenyeyGreenstein의 사용
-
-```glsl
-
-float shadowScatterProbability = calculateScatterProbability(shadowDensity, LIGHT_STEP);
-if (shadowScatterProbability > randomFloat01(rngState)) {
-    lightDir = sampleHenyeyGreenstein(lightDir, 0.6, rngState);
-}
-
-```
-
 `sampleHenyeyGreenstein` 함수는 Henyey-Greenstein 위상 함수를 사용하여 주어진 방향에서 산란된 새로운 방향 벡터를 샘플링한다. 
 이 함수는 먼저 난수를 생성한다. 첫 번째 난수는 Henyey-Greenstein 분포에서 $\cos\theta$를 샘플링하는 데 사용되고, 두 번째 난수는 방위각 $\phi$를 결정한다.
 $\cos\theta$는 주어진 비대칭 파라미터 $g$를 사용해 샘플링되며, $g$ 값은 산란의 특성을 조정한다.
@@ -143,4 +142,5 @@ $g > 0$이면 빛이 전방으로 산란되고, $g < 0$이면 후방으로 산�
 이렇게 생성된 벡터는 `alignToDirection` 함수를 통해 기준 방향으로 정렬된다. 
 이 과정은 회전축과 회전 행렬을 계산해 벡터를 회전시키는 방식으로 이루어지며, 최종적으로 기준 방향과 정렬된 새로운 벡터가 반환된다.
 
+이런 식으로 빛이 단순히 하나의 방향으로 들어오는 것이 아니라, 실제로 산란하며 매질과 상호작용하는 것까지 고려해서 렌더하도록 만들 수 있다. 참 쉽죠?
 전체 코드는 [쉐이더토이에서](https://www.shadertoy.com/view/lfyyWt) 살펴볼 수 있다.
