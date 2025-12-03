@@ -8,6 +8,10 @@ tags:
   - Visualizer
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=FrdYPi9tJ1w
+" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 이번에 좋은 기회로 'suiimeetsyou'님이 작곡한 'G e t s u yo b i' 라는 곡의 Visualizer를 제작하게 되었다. 마침 창작에 목마른 시점인지라 창작욕을 마구 발산해보자고 다짐했고, 아주 재미있게 작업했다.
 
 나는 이 작업에서 요새 잘나간다는 바로 그 'AI'를 활용했다. 그렇다. 나는 무려 AI 아티스트이다. 요즘엔 AI 아티스트로 자신을 정의하는 사람들이 참 많다. 그럼에도, AI라는 매체 자체를 탐구하는 작업은 드물다. 일반적으로 AI는 그저 창작의 도구이지 그것 자체가 목적은 아닌 것으로 여겨진다. 이 점이 내게는 늘 미스테리다. 단순히 AI를 도구로 사용했다고 AI 아티스트라 한다면, 왜 포토샵 아티스트나 붓 아티스트라는 표현은 쓰지 않을까? 마치 첼로를 사용하면 첼리스트라고 부르는 것처럼, AI를 사용하니까 AI 아티스트인 걸까?
