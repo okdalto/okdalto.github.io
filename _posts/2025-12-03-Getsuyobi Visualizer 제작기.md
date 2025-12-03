@@ -8,8 +8,7 @@ tags:
   - Visualizer
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=FrdYPi9tJ1w
-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FrdYPi9tJ1w?si=nJSh_wXHo2cZf-4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 이번에 좋은 기회로 'suiimeetsyou'님이 작곡한 'G e t s u yo b i' 라는 곡의 Visualizer를 제작하게 되었다. 마침 창작에 목마른 시점인지라 창작욕을 마구 발산해보자고 다짐했고, 아주 재미있게 작업했다.
