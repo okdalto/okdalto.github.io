@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
+
+{%- if site.comments.provider == "utterances" %}
+<section class="comments">
+  <h2 class="comments-title">Comments</h2>
+  <script src="https://utteranc.es/client.js"
+    repo="{{ site.repository }}"
+    issue-term="{{ site.comments.utterances.issue_term | default: 'pathname' }}"
+    theme="{{ site.comments.utterances.theme | default: 'github-light' }}"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
+{%- endif %}

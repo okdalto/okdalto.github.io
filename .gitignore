@@ -1,4 +1,13 @@
-
+.DS_Store
 assets/images/.DS_Store
-.DS_Store
-.DS_Store
+
+# Jekyll build output / caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+Gemfile.lock
+vendor/
+.bundle/
