@@ -52,6 +52,13 @@ a:visited { color: #551a8b; }
     margin-right: 0;
     font-size: 13px;
   }
+  /* tighter spacing between blocks on mobile */
+  .post-content, .page-content { margin-top: 14px; }
+  .post-content p, .page-content p { margin: 0.7em 0; }
+  .post-content h2, .page-content h2 { margin: 1.1em 0 0.35em; }
+  .post-content h3, .page-content h3 { margin: 1em 0 0.35em; }
+  .post-content img, .page-content img,
+  .post-content iframe, .page-content iframe { margin: 0.8em 0; }
 }
 
 /* post / page */
