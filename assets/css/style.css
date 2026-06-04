@@ -10,6 +10,8 @@ body {
   line-height: 1.6;
   color: #111;
   background: #fff;
+  word-break: keep-all;       /* 한글은 어절(공백) 단위로 줄바꿈 */
+  overflow-wrap: break-word;  /* 긴 URL 등은 강제로 줄바꿈 */
 }
 
 /* links: plain, underlined */
