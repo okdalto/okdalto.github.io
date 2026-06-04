@@ -40,6 +40,16 @@ a:visited { color: #551a8b; }
   margin-right: 12px;
 }
 
+/* on narrow screens, stack date above the (possibly long) title */
+@media (max-width: 600px) {
+  .post-list li { margin: 12px 0; }
+  .post-list time {
+    display: block;
+    margin-right: 0;
+    font-size: 13px;
+  }
+}
+
 /* post / page */
 .post-header, .page-header { margin: 24px 0 0; }
 .post-title, .page-title {
