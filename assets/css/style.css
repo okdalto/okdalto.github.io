@@ -40,11 +40,15 @@ a:visited { color: #551a8b; }
   margin-right: 12px;
 }
 
-/* on narrow screens, stack date above the (possibly long) title */
+/* on narrow screens, stack the title first and the date below it */
 @media (max-width: 600px) {
-  .post-list li { margin: 12px 0; }
+  .post-list li {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    margin: 12px 0;
+  }
   .post-list time {
-    display: block;
     margin-right: 0;
     font-size: 13px;
   }
