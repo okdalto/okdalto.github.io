@@ -9,10 +9,7 @@ tags:
   - cloud
 ---
 
-## Volume Rendering, Path Tracing 버전 ##
-
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-12-21-Volume%20Rendering%20(Path%20Tracing)/volume_rendering.jpg?raw=true)
-
 
 이전 글에서 Ray integration을 단순화하여 Ray marching으로 Volume rendering을 구현하는 방법에 대해 다뤘다. 
 해당 구현에서는 단 하나의 방향에서만 들어오는 빛을 가정하였으나, 실제로는 각 Ray step마다 구면의 모든 방향으로 들어오는 빛을 고려하는 것이 좀 더 물리적으로 정확하다 할 수 있겠다.
@@ -71,7 +68,6 @@ float calculateScatterProbability(float sigma_s, float delta_x) {
 
 Scattering확률을 구하고, 만약 Scattering한다고 결정된다면, 그 빛의 방향은 랜덤하게 결정되는 것이 아니라 Henyey-Greenstein Phase Function에 따라 샘플링된다.
 그 방식은 좀 복잡한데 먼저 코드를 살펴보면 다음과 같다.
-
 
 ```glsl
 
