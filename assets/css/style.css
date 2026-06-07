@@ -48,8 +48,10 @@ a:visited { color: #551a8b; }
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
-    margin: 12px 0;
+    margin: 4px 0;
+    line-height: 1.35;
   }
+  .post-list time { margin-top: 1px; }
   .post-list time {
     margin-right: 0;
     font-size: 13px;
@@ -86,6 +88,23 @@ a:visited { color: #551a8b; }
 .post-content iframe, .page-content iframe {
   max-width: 100%;
   margin: 1.2em 0;
+}
+
+/* figures with auto-numbered captions ("Figure 1." ...) */
+.post-content, .page-content { counter-reset: figure; }
+.post-content figure, .page-content figure { margin: 1.4em 0; }
+.post-content figure img, .page-content figure img { margin: 0; }
+.post-content figcaption, .page-content figcaption {
+  font-size: 0.82em;
+  line-height: 1.5;
+  color: #777;
+  margin-top: 6px;
+}
+.post-content figcaption::before, .page-content figcaption::before {
+  counter-increment: figure;
+  content: "Figure " counter(figure) ". ";
+  font-weight: 600;
+  color: #555;
 }
 /* responsive 16:9 for video embeds */
 .post-content iframe[src*="youtube"],
