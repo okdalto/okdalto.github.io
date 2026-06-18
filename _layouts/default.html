@@ -14,7 +14,7 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <a class="site-title" href="{{ '/' | relative_url }}"><img class="site-logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="">{{ site.title }}</a>
     <nav class="site-nav">
       {%- for item in site.data.navigation.main -%}
       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
