@@ -336,14 +336,7 @@ else
 
 ## 직접 돌려보기 ##
 
-아래는 지금까지 뜯어본 코드가 그대로 돌아가는 Shadertoy 임베드다. 마우스로 드래그하면 시점이 움직이고, 프레임이 쌓이며 노이즈가 줄어드는 누적 과정도 실시간으로 볼 수 있다.
-
-<figure>
-<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px;">
-<iframe src="https://www.shadertoy.com/embed/dstyzH?gui=true&t=10&paused=false&muted=true" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
-</div>
-<figcaption markdown="span">Shadertoy에서 직접 열려면 [여기](https://www.shadertoy.com/view/dstyzH)를 누르면 된다.</figcaption>
-</figure>
+지금까지 뜯어본 코드 전체는 [Shadertoy](https://www.shadertoy.com/view/dstyzH)에 올려두었다. 마우스로 드래그해 시점을 바꾸거나, 프레임이 쌓이며 노이즈가 줄어드는 누적 과정을 실시간으로 볼 수 있다.
 
 ## 정리 ##
 
