@@ -160,6 +160,16 @@ pre {
 }
 pre code { background: none; padding: 0; font-size: inherit; }
 
+/* math: let wide display equations scroll instead of overflowing (mobile) */
+.MathJax_Display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 2px 0;
+}
+.MathJax_Display::-webkit-scrollbar { height: 4px; }
+.MathJax_Display::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
 /* footer */
 .site-footer {
   margin-top: 60px;
