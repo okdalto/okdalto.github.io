@@ -107,7 +107,6 @@ bool RayMarch(vec3 ro, vec3 rd, out vec3 hitPos, out HitInfo hit)
             break;
         }
 
-        // Folded/fractal SDFs are often not perfectly conservative.
         t += max(hit.dist * 0.8, SURF_EPS);
     }
 
@@ -116,7 +115,7 @@ bool RayMarch(vec3 ro, vec3 rd, out vec3 hitPos, out HitInfo hit)
 }
 ```
 
-주석에 적혀 있듯, 공간을 접어 만든 distance field는 실제 거리를 약간 과대평가하는 경우가 있어 그대로 점프하면 표면을 뚫고 지나갈 수 있다. 그래서 거리의 80%(`hit.dist * 0.8`)만큼만 조심스럽게 전진한다.
+공간을 접어 만든 distance field는 실제 거리를 약간 과대평가하는 경우가 있어 그대로 점프하면 표면을 뚫고 지나갈 수 있다. 그래서 거리의 80%(`hit.dist * 0.8`)만큼만 조심스럽게 전진한다.
 
 ## thin lens camera ##
 
@@ -180,7 +179,6 @@ for (int bounce = 0; bounce < MAX_BOUNCES; bounce++)
     radiance += throughput * mat.emission;
 
     ro = hitPos + n * SURF_EPS * 4.0;
-    ...
 ```
 
 `radiance`는 지금까지 모은 빛, `throughput`은 앞서 설명한 보정항의 누적 곱이다. 광선이 아무것도 맞히지 못하고 장면을 빠져나가면 environment map(HDRI)을 샘플링해 그 빛을 `throughput`만큼 실어 더하고 끝낸다. 결국 이 path tracer에서 빛은 전적으로 환경에서 들어온다.
@@ -329,7 +327,6 @@ if (iFrame == 0)
 }
 else
 {
-    //col = mix(previous, radiance, 1.0 / float(iFrame + 1));
     col = mix(previous, radiance, 0.05);
 }
 ```
