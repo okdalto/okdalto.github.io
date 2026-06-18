@@ -162,8 +162,10 @@ pre {
 }
 pre code { background: none; padding: 0; font-size: inherit; }
 
-/* math: let wide display equations scroll instead of overflowing (mobile) */
+/* math: let wide display equations scroll instead of overflowing (mobile).
+   covers HTML-CSS (.MathJax_Display), CommonHTML (.MJXc-display), and SVG output. */
 .MathJax_Display,
+.MJXc-display,
 .MathJax_SVG_Display,
 mjx-container[display="true"] {
   display: block;
@@ -172,11 +174,11 @@ mjx-container[display="true"] {
   max-width: 100%;
   padding: 2px 0;
 }
-.MathJax_Display .MathJax,
-.MathJax_SVG_Display .MathJax_SVG { max-width: none; }
 .MathJax_Display::-webkit-scrollbar,
+.MJXc-display::-webkit-scrollbar,
 .MathJax_SVG_Display::-webkit-scrollbar { height: 4px; }
 .MathJax_Display::-webkit-scrollbar-thumb,
+.MJXc-display::-webkit-scrollbar-thumb,
 .MathJax_SVG_Display::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
 
 /* footer */
