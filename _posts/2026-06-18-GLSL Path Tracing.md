@@ -11,7 +11,7 @@ tags:
 
 <figure>
 <img src="/assets/2026-06-18-path-tracing/fractal-render.jpg" alt="이 글의 GLSL path tracer로 렌더링한 금속 fractal">
-<figcaption markdown="span">이 글에서 뜯어볼 GLSL path tracer로 렌더링한 결과. 공간을 접어 만든 금속 fractal이 환경을 비추고, thin lens 카메라가 얕은 피사계 심도를 만든다.</figcaption>
+<figcaption markdown="span">이 글에서 뜯어볼 GLSL path tracer로 렌더링한 결과. 공간을 접어 만든 금속 fractal이 환경을 비추고, thin lens 카메라가 얕은 피사계 심도를 만든다. 전체 코드는 [Shadertoy](https://www.shadertoy.com/view/dstyzH)에서 직접 돌려볼 수 있다.</figcaption>
 </figure>
 
 [빛과 렌더링](/생각/빛과-렌더링/)에서는 빛이 물질과 어떻게 상호작용하는지를 물리적으로 살펴봤고, [Volume Rendering, Path Tracing 버전](/작업/Volume-Rendering-%28Path-Tracing%29/)에서는 그 빛을 매질 속에서 Monte Carlo 방식으로 추적하는 방법을 다뤘다. 이번 글에서는 매질이 아니라 표면(surface)을 다룬다. SDF로 정의된 장면에 빛을 쏘고, 표면에서 반사·확산되는 광선을 끝까지 따라가 한 장의 이미지를 만들어내는 GLSL Path Tracer를 처음부터 끝까지 뜯어보자.
@@ -333,6 +333,17 @@ else
     col = mix(previous, radiance, 0.05);
 }
 ```
+
+## 직접 돌려보기 ##
+
+아래는 지금까지 뜯어본 코드가 그대로 돌아가는 Shadertoy 임베드다. 마우스로 드래그하면 시점이 움직이고, 프레임이 쌓이며 노이즈가 줄어드는 누적 과정도 실시간으로 볼 수 있다.
+
+<figure>
+<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px;">
+<iframe src="https://www.shadertoy.com/embed/dstyzH?gui=true&t=10&paused=false&muted=true" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+</div>
+<figcaption markdown="span">Shadertoy에서 직접 열려면 [여기](https://www.shadertoy.com/view/dstyzH)를 누르면 된다.</figcaption>
+</figure>
 
 ## 정리 ##
 
