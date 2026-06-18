@@ -35,7 +35,7 @@ $$L_o(\mathbf{p}, \omega_o) = L_e(\mathbf{p}, \omega_o) + \int_{\Omega} f_r(\mat
 
 $$L_o \approx L_e + \frac{1}{N}\sum_{k=1}^{N} \frac{f_r\, L_i\, (\omega_i \cdot \mathbf{n})}{p(\omega_i)}$$
 
-여기서 $p(\omega_i)$는 그 방향을 뽑을 확률밀도다. 분모에 확률을 나눠주는 것이 핵심인데, 잘 안 뽑히는 방향이 우연히 선택되면 그만큼 크게 보정해줘야 추정값이 한쪽으로 치우치지 않기 때문이다. 이 보정항을 매 반사마다 곱해 나가는 변수를 보통 throughput이라 부른다. 코드 전체가 사실상 이 한 줄을 광선 한 가닥에 대해 구현한 것이다.
+여기서 $p(\omega_i)$는 그 방향을 뽑을 확률밀도다. 분모에 확률을 나눠주는 것이 핵심인데, 잘 안 뽑히는 방향이 우연히 선택되면 그만큼 크게 보정해줘야 추정값이 한쪽으로 치우치지 않기 때문이다. 이 보정항을 매 반사마다 곱해 나가는 변수를 보통 throughput이라 부른다. 코드 전체가 사실상 이 한 줄을 ray 한 가닥에 대해 구현한 것이다.
 
 ## 장면을 거리로: SDF와 Ray Marching ##
 
@@ -117,9 +117,9 @@ bool RayMarch(vec3 ro, vec3 rd, out vec3 hitPos, out HitInfo hit)
 
 공간을 접어 만든 distance field는 실제 거리를 약간 과대평가하는 경우가 있어 그대로 점프하면 표면을 뚫고 지나갈 수 있다. 그래서 거리의 80%(`hit.dist * 0.8`)만큼만 조심스럽게 전진한다.
 
-## thin lens camera ##
+## Thin lens camera ##
 
-가장 단순한 카메라는 한 점(pinhole)에서 광선을 쏜다. 그러면 모든 것이 또렷하게 찍히지만, 우리 눈이나 실제 렌즈가 만드는 out-of-focus(피사계 심도)는 표현할 수 없다. 그래서 thin lens 모델을 쓴다.
+가장 단순한 카메라는 한 점(pinhole)에서 광선을 쏜다. 그러면 모든 것이 또렷하게 찍히지만, 우리 눈이나 실제 렌즈가 만드는 피사계 심도는 표현할 수 없다. 그래서 thin lens 모델을 쓴다.
 
 ```glsl
 vec3 pinholeDir = normalize(
@@ -139,7 +139,7 @@ vec3 ro = camPos + right * lens.x + up * lens.y;
 vec3 rd = normalize(focusPoint - ro);
 ```
 
-원리는 이렇다. 먼저 pinhole 카메라라면 광선이 향했을 방향(`pinholeDir`)을 따라 초점 거리(`focusDist`)만큼 떨어진 곳에 초점 평면 위의 한 점(`focusPoint`)을 잡는다. 그다음 광선의 출발점을 한 점이 아니라 반지름 `lensRadius`짜리 원판 위의 무작위 점으로 흩뜨린다(`RandomInDisk`). 출발점은 흔들리지만 모든 광선이 똑같은 `focusPoint`를 향하므로, 초점 평면 위의 물체는 항상 또렷하게 모이고 그보다 가깝거나 먼 물체는 흩어져 흐려진다. `lensRadius`를 키우면 조리개를 연 것처럼 흐림이 강해진다.
+원리는 이렇다. 먼저 pinhole 카메라라면 ray가 향했을 방향(`pinholeDir`)을 따라 초점 거리(`focusDist`)만큼 떨어진 곳에 초점 평면 위의 한 점(`focusPoint`)을 잡는다. 그다음 광선의 출발점을 한 점이 아니라 반지름 `lensRadius`짜리 원판 위의 무작위 점으로 흩뜨린다(`RandomInDisk`). 출발점은 흔들리지만 모든 ray가 똑같은 `focusPoint`를 향하므로, 초점 평면 위의 물체는 항상 또렷하게 모이고 그보다 가깝거나 먼 물체는 흩어져 흐려진다. `lensRadius`를 키우면 조리개를 연 것처럼 흐림이 강해진다.
 
 <figure>
 <img src="/assets/2026-06-18-path-tracing/dof.svg" alt="조리개 크기에 따른 피사계 심도 변화 다이어그램">
@@ -181,7 +181,7 @@ for (int bounce = 0; bounce < MAX_BOUNCES; bounce++)
     ro = hitPos + n * SURF_EPS * 4.0;
 ```
 
-`radiance`는 지금까지 모은 빛, `throughput`은 앞서 설명한 보정항의 누적 곱이다. 광선이 아무것도 맞히지 못하고 장면을 빠져나가면 environment map(HDRI)을 샘플링해 그 빛을 `throughput`만큼 실어 더하고 끝낸다. 결국 이 path tracer에서 빛은 전적으로 환경에서 들어온다.
+`radiance`는 지금까지 모은 빛, `throughput`은 앞서 설명한 보정항의 누적 곱이다. 광선이 아무것도 맞히지 못하고 장면을 빠져나가면 environment map을 샘플링해 그 빛을 `throughput`만큼 실어 더하고 끝낸다. 결국 이 path tracer에서 빛은 전적으로 환경에서 들어온다.
 
 표면에 닿으면 먼저 normal vector를 구한다. distance field에서 normal vector는 각 축 방향으로 거리의 gradient를 구해 얻는다.
 
@@ -198,7 +198,7 @@ vec3 getNormal(vec3 p)
 }
 ```
 
-normal vector가 광선과 같은 쪽을 보고 있으면 뒤집어 항상 광선을 마주보게 만들고(`dot(n, rd) > 0.0`), 표면이 스스로 빛을 낸다면 그 발광(emission)을 더한다. 마지막으로 다음 광선의 출발점을 표면에서 normal vector 방향으로 살짝 띄운다. 이렇게 하지 않으면 새 광선이 방금 맞힌 표면에 곧바로 다시 부딪히는 self-intersection이 생긴다.
+normal vector가 ray와 같은 쪽을 보고 있으면 뒤집어 항상 ray를 마주보게 만들고(`dot(n, rd) > 0.0`), 표면이 스스로 빛을 낸다면 그 emission을 더한다. 마지막으로 다음 광선의 출발점을 표면에서 normal vector 방향으로 살짝 띄운다. 이렇게 하지 않으면 새 광선이 방금 맞힌 표면에 곧바로 다시 부딪히는 self-intersection이 생긴다.
 
 ## Fresnel과 재질 ##
 
@@ -239,7 +239,7 @@ vec3 F = F0 + (1.0 - F0) * x * x * x * x * x;
 
 ## 반사냐 확산이냐: 확률적 선택 ##
 
-빛이 한 번 튕길 때마다 반사(specular)와 diffuse 두 경로로 갈라진다. 둘 다 추적하면 광선이 매 반사마다 두 배로 불어나 폭발한다. 그래서 둘 중 하나만 확률적으로 고른다.
+빛이 한 번 튕길 때마다 specular와 diffuse 두 경로로 갈라진다. 둘 다 추적하면 ray가 매 반사마다 두 배로 불어나 폭발한다. 그래서 둘 중 하나만 확률적으로 고른다.
 
 ```glsl
 vec3 specularWeight = F;
@@ -276,11 +276,11 @@ else
 }
 ```
 
-반사를 골랐다면 완벽한 거울 반사 방향(`reflect`)을 기준으로, 거칠기(roughness)에 따라 방향을 흩뜨린다. 거칠기가 0이면 순수한 거울, 1에 가까우면 반사 방향 주변으로 넓게 퍼지는 광택 표면이 된다. 미세면(microfacet) 기반의 GGX 같은 정식 모델은 아니고, 거울 반사 방향과 cosine 분포 사이를 선형 보간하는 가벼운 근사지만, 적은 비용으로 그럴듯한 광택을 만들어낸다.
+반사를 골랐다면 완벽한 specular 방향(`reflect`)을 기준으로, 거칠기(roughness)에 따라 방향을 흩뜨린다. 거칠기가 0이면 순수한 거울, 1에 가까우면 반사 방향 주변으로 넓게 퍼지는 광택 표면이 된다. 미세면(microfacet) 기반의 GGX 같은 정식 모델은 아니고, specular 방향과 cosine 분포 사이를 선형 보간하는 가벼운 근사지만, 적은 비용으로 그럴듯한 광택을 만들어낸다.
 
 <figure>
-<img src="/assets/2026-06-18-path-tracing/reflection-types.svg" alt="거울 반사(specular)와 diffuse 비교 다이어그램">
-<figcaption markdown="span">거울 반사(왼쪽)와 diffuse(오른쪽). roughness가 0이면 거울처럼 한 방향으로, 1에 가까우면 모든 방향으로 흩어지는 diffuse가 된다. 코드는 이 둘 사이를 거칠기로 보간한다. 출처: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Specular_And_Diffuse_Reflection.svg)</figcaption>
+<img src="/assets/2026-06-18-path-tracing/reflection-types.svg" alt="specular와 diffuse 비교 다이어그램">
+<figcaption markdown="span">specular(왼쪽)와 diffuse(오른쪽). roughness가 0이면 거울처럼 한 방향으로, 1에 가까우면 모든 방향으로 흩어지는 diffuse가 된다. 코드는 이 둘 사이를 거칠기로 보간한다. 출처: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Specular_And_Diffuse_Reflection.svg)</figcaption>
 </figure>
 
 diffuse를 골랐다면 normal vector를 중심으로 한 cosine 가중 반구에서 방향을 뽑는다. Lambert 표면이 정확히 이 분포를 따르기 때문에, 앞서 본 Monte Carlo 식의 $\cos\theta$ 항과 확률 $p(\omega_i)$가 깔끔하게 약분된다.
@@ -310,7 +310,7 @@ throughput이 작을수록 큰 확률로 광선을 죽인다. 단, 살아남은 
 
 ## 점진적 누적 ##
 
-광선 한 가닥, 한 프레임의 결과는 노이즈투성이다. Path tracing은 본질적으로 여러 표본의 평균이 필요하다. 그래서 프레임마다 결과를 이전 프레임과 섞어 쌓아간다.
+광선 한 가닥, 한 프레임의 결과는 노이즈 덩어리다. Path tracing은 본질적으로 여러 표본의 평균이 필요하다. 그래서 프레임마다 결과를 이전 프레임과 섞어 쌓아간다.
 
 <figure>
 <img src="/assets/2026-06-18-path-tracing/samples.png" alt="픽셀당 표본 수가 늘수록 노이즈가 줄어드는 비교 이미지">
@@ -333,10 +333,10 @@ else
 
 ## 직접 돌려보기 ##
 
-지금까지 뜯어본 코드 전체는 [Shadertoy](https://www.shadertoy.com/view/dstyzH)에 올려두었다. 마우스로 드래그해 시점을 바꾸거나, 프레임이 쌓이며 노이즈가 줄어드는 누적 과정을 실시간으로 볼 수 있다.
+지금까지 뜯어본 코드 전체는 [Shadertoy](https://www.shadertoy.com/view/dstyzH)에 올려두었다. 프레임이 쌓이며 노이즈가 줄어드는 누적 과정을 실시간으로 볼 수 있다.
 
 ## 정리 ##
 
-코드를 한 바퀴 돌고 나면 path tracing의 골격이 그대로 보인다. 빛을 거꾸로(카메라에서 장면으로) 쏘고, 표면에 닿을 때마다 Fresnel로 반사/diffuse를 확률적으로 갈라 한 방향만 따라가며, 그 선택의 확률로 보정한 throughput을 곱해 나가다, environment map에서 빛을 받아오거나 Russian Roulette으로 끝낸다. 그리고 noisy한 결과를 프레임마다 쌓아 평균낸다.
+코드를 한 바퀴 돌고 나면 path tracing의 골격이 그대로 보인다. 빛을 거꾸로(카메라에서 장면으로) 쏘고, 표면에 닿을 때마다 Fresnel로 specular/diffuse를 확률적으로 갈라 한 방향만 따라가며, 그 선택의 확률로 보정한 throughput을 곱해 나가다, environment map에서 빛을 받아오거나 Russian Roulette으로 끝낸다. 그리고 noisy한 결과를 프레임마다 쌓아 평균낸다.
 
-[빛과 렌더링](/생각/빛과-렌더링/)에서 다룬 물리가 이 짧은 쉐이더 안에서 그대로 코드가 된다. 닫힌 형태로 풀 수 없는 렌더링 방정식을 Monte Carlo 표본추출과 누적 평균으로 근사하는 것이 path tracing의 핵심이다.
+[빛과 렌더링](/생각/빛과-렌더링/)에서 다룬 물리가 이 쉐이더 안에서 그대로 코드가 된다. 닫힌 형태로 풀 수 없는 렌더링 방정식을 Monte Carlo 표본추출과 누적 평균으로 근사하는 것이 path tracing의 핵심이다.
