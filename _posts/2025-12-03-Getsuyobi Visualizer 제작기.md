@@ -6,8 +6,8 @@ categories:
 tags:
   - AI
   - Visualizer
+ref: getsuyobi-visualizer
 ---
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FrdYPi9tJ1w?si=nJSh_wXHo2cZf-4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 

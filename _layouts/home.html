@@ -8,8 +8,13 @@ layout: default
 </div>
 {%- endif %}
 
+{%- if page.lang == 'en' -%}
+  {%- assign posts = site.en | sort: 'date' | reverse -%}
+{%- else -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
 <ul class="post-list">
-  {%- for post in site.posts %}
+  {%- for post in posts %}
   <li>
     <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
     <a href="{{ post.url | relative_url }}">{{ post.title }}</a>

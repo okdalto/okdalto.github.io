@@ -21,7 +21,13 @@ a { color: #00e; }
 a:visited { color: #551a8b; }
 
 /* header / nav */
-.site-header { margin-bottom: 24px; }
+.site-header { margin-bottom: 24px; position: relative; }
+.lang-switch {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  font-size: 15px;
+}
 .site-title {
   display: inline-flex;
   align-items: center;

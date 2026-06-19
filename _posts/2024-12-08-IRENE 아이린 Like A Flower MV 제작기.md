@@ -6,8 +6,8 @@ categories:
 tags:
   - 아이린
   - vfx
+ref: irene-like-a-flower-mv
 ---
-
 <iframe width="992" height="458" src="https://www.youtube.com/embed/KdOF5-h4qpw?start=79" title="IRENE 아이린 &#39;Like A Flower&#39; MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---

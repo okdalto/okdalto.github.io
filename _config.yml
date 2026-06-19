@@ -46,6 +46,12 @@ exclude:
 keep_files:
   - .git
 
+# --- Collections (English translations) ---
+collections:
+  en:
+    output: true
+    permalink: /en/:title/
+
 # --- Defaults ---
 defaults:
   - scope:
@@ -53,8 +59,16 @@ defaults:
       type: posts
     values:
       layout: post
+      lang: ko
+  - scope:
+      path: ""
+      type: en
+    values:
+      layout: post
+      lang: en
   - scope:
       path: ""
       type: pages
     values:
       layout: page
+      lang: ko

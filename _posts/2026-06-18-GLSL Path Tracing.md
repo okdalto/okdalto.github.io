@@ -7,6 +7,7 @@ tags:
   - rendering
   - path tracing
   - GLSL
+ref: glsl-path-tracing
 ---
 
 <figure>

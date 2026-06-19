@@ -6,8 +6,8 @@ categories:
 tags:
   - AI
   - 개발
+ref: karpathy-autoresearch
 ---
-
 > 2026년 3월에 인스타 스토리에 쓴 글을 옮겨왔습니다.
 
 안드레 카파시(Andrej Karpathy)가 최근 공개한 [autoresearch 프로젝트](https://github.com/karpathy/autoresearch)는 AI 모델 개발 프로세스가 인간의 직접적인 개입에서 벗어나 자율적 진화의 단계로 진입했음을 보여주는 실증적 사례다. 이 실험의 핵심 메커니즘은 단순하면서도 파격적이다. 인간은 에이전트의 지침을 수정해 연구의 방향성과 환경을 정의하고, AI 에이전트는 이를 바탕으로 실제 학습 코드인 train.py를 무한히 수정하며 최적의 해를 찾아낸다.

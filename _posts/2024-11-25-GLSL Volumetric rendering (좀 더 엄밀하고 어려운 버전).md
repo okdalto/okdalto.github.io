@@ -7,8 +7,8 @@ tags:
   - rendering
   - volumetric
   - cloud
+ref: glsl-volumetric-rendering-rigorous
 ---
-
 - 좀 더 친절하고 쉬운 버전은 [여기](https://okdalto.github.io/%EC%9E%91%EC%97%85/GLSL-Volumetric-rendering-(%EC%A2%80-%EB%8D%94-%EC%B9%9C%EC%A0%88%ED%95%98%EA%B3%A0-%EC%89%AC%EC%9A%B4-%EB%B2%84%EC%A0%84)/)를 참고하세요
 
 

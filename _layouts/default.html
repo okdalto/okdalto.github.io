@@ -9,14 +9,33 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
   {%- endif %}
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260618c">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260619">
   {%- feed_meta -%}
 </head>
 <body>
+  {%- assign cur = page.lang | default: 'ko' -%}
+  {%- assign home_url = '/' -%}
+  {%- if cur == 'en' %}{% assign home_url = '/en/' %}{% endif -%}
+  {%- assign other_url = page.translation_url -%}
+  {%- if other_url == nil and cur == 'en' -%}
+    {%- assign match = site.posts | where: 'ref', page.ref | first -%}
+    {%- assign other_url = match.url -%}
+  {%- elsif other_url == nil -%}
+    {%- assign match = site.en | where: 'ref', page.ref | first -%}
+    {%- assign other_url = match.url -%}
+  {%- endif -%}
+  {%- if cur == 'en' -%}
+    {%- assign other_url = other_url | default: '/' -%}
+    {%- assign lang_label = '한국어' -%}
+  {%- else -%}
+    {%- assign other_url = other_url | default: '/en/' -%}
+    {%- assign lang_label = 'EN' -%}
+  {%- endif -%}
   <header class="site-header">
-    <a class="site-title" href="{{ '/' | relative_url }}"><img class="site-logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="">{{ site.title }}</a>
+    <a class="site-title" href="{{ home_url | relative_url }}"><img class="site-logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="">{{ site.title }}</a>
+    <a class="lang-switch" href="{{ other_url | relative_url }}">{{ lang_label }}</a>
     <nav class="site-nav">
-      {%- for item in site.data.navigation.main -%}
+      {%- for item in site.data.navigation[cur] -%}
       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
       {%- endfor -%}
     </nav>

@@ -7,8 +7,8 @@ tags:
   - rendering
   - volumetric
   - cloud
+ref: volume-rendering-path-tracing
 ---
-
 ![이미지](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2024-12-21-Volume%20Rendering%20(Path%20Tracing)/volume_rendering.jpg?raw=true)
 
 이전 글에서 Ray integration을 단순화하여 Ray marching으로 Volume rendering을 구현하는 방법에 대해 다뤘다. 

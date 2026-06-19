@@ -1,5 +1,11 @@
-main:
+ko:
   - title: "Posts"
     url: /
   - title: "About"
     url: /about/
+
+en:
+  - title: "Posts"
+    url: /en/
+  - title: "About"
+    url: /en/about/

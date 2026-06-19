@@ -7,8 +7,8 @@ tags:
   - rendering
   - volumetric
   - cloud
+ref: glsl-volumetric-rendering-gentle
 ---
-
 - 좀 더 엄밀하고 어려운 버전은 [여기](https://okdalto.github.io/%EC%9E%91%EC%97%85/GLSL-Volumetric-rendering-(%EC%A2%80-%EB%8D%94-%EC%97%84%EB%B0%80%ED%95%98%EA%B3%A0-%EC%96%B4%EB%A0%A4%EC%9A%B4-%EB%B2%84%EC%A0%84)/)를 참고하세요
 
 ## 물체를 표현하는 방법: Polygon과 Voxel Representation ##
