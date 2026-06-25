@@ -1,6 +1,6 @@
 ---
 title: "The Optimal Stopping Problem: When Should You Confess?"
-date: 2026-06-26T10:00:00+09:00
+date: 2026-06-26T08:00:00+09:00
 categories:
   - thoughts
 tags:
