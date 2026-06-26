@@ -3,13 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    /* set theme before paint to avoid a flash of the wrong colors */
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   {%- assign page_title = page.title | default: site.title -%}
   <title>{% if page.title %}{{ page.title }} {{ site.title_separator | default: '·' }} {% endif %}{{ site.title }}</title>
   {%- if page.excerpt or site.description %}
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
   {%- endif %}
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260619">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260626">
   {%- feed_meta -%}
 </head>
 <body>
@@ -33,7 +45,10 @@
   {%- endif -%}
   <header class="site-header">
     <a class="site-title" href="{{ home_url | relative_url }}"><img class="site-logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="">{{ site.title }}</a>
-    <a class="lang-switch" href="{{ other_url | relative_url }}">{{ lang_label }}</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-to-dark="{% if cur == 'en' %}Dark{% else %}다크{% endif %}" data-to-light="{% if cur == 'en' %}Light{% else %}라이트{% endif %}" aria-label="{% if cur == 'en' %}Toggle dark mode{% else %}다크 모드 전환{% endif %}"></button>
+      <a class="lang-switch" href="{{ other_url | relative_url }}">{{ lang_label }}</a>
+    </div>
     <nav class="site-nav">
       {%- for item in site.data.navigation[cur] -%}
       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
@@ -48,6 +63,20 @@
   <footer class="site-footer">
     <span>&copy; {{ site.title }}</span>
   </footer>
+
+  <script>
+    /* dark mode toggle */
+    (function () {
+      var btn = document.querySelector('.theme-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+  </script>
 
   <!-- MathJax -->
   <script type="text/javascript" async
