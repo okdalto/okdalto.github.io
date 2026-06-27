@@ -1,6 +1,6 @@
 ---
 title: "Two Kinds of Intelligence"
-date: 2026-06-28T08:00:00+09:00
+date: 2026-06-28T00:00:00+09:00
 categories:
   - thoughts
 tags:
