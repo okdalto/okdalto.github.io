@@ -1,5 +1,6 @@
 ---
 title: "Volume Rendering, Path Tracing 버전"
+permalink: /work/volume-rendering-path-tracing/
 date: 2024-12-21T10:34:30+09:00
 categories:
   - 작업

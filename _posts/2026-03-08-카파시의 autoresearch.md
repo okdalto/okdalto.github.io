@@ -1,5 +1,6 @@
 ---
 title: "카파시의 autoresearch — 스스로 진화하는 소프트웨어"
+permalink: /thoughts/karpathy-autoresearch/
 date: 2026-03-08T10:00:00+09:00
 categories:
   - 생각

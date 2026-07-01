@@ -1,5 +1,6 @@
 ---
 title: "GLSL Path Tracing"
+permalink: /work/glsl-path-tracing/
 date: 2026-06-18T10:34:30+09:00
 categories:
   - 작업

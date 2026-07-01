@@ -1,5 +1,6 @@
 ---
 title: "GLSL Volumetric rendering (좀 더 엄밀하고 어려운 버전)"
+permalink: /work/glsl-volumetric-rendering-rigorous/
 date: 2024-11-25T10:34:30+09:00
 categories:
   - 작업

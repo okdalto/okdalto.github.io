@@ -1,5 +1,6 @@
 ---
 title: "'G e t s u yo b i' Visualizer 제작기"
+permalink: /work/getsuyobi-visualizer/
 date: 2025-12-03T15:05:14+09:00
 categories:
   - 작업

@@ -1,5 +1,6 @@
 ---
 title: "GLSL Volumetric rendering (좀 더 친절하고 쉬운 버전)"
+permalink: /work/glsl-volumetric-rendering-gentle/
 date: 2024-11-25T10:34:30+09:00
 categories:
   - 작업
