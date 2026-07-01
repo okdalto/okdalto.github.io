@@ -1,5 +1,6 @@
 ---
 title: "Art and Virus"
+permalink: /en/art-and-virus/
 date: 2026-07-01T00:00:00+09:00
 categories:
   - thoughts
