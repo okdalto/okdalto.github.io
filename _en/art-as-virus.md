@@ -1,5 +1,5 @@
 ---
-title: "Isn't Art Perhaps a Virus That Hacks the Human System?"
+title: "Art and Virus"
 date: 2026-07-01T00:00:00+09:00
 categories:
   - thoughts
