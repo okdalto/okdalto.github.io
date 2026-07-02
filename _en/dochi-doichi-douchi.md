@@ -35,7 +35,7 @@ For the image generator, I used StyleGAN2. It can be trained even on a modest 24
 
 Because I was treating typefaces as images, my training data needed to be individual glyph images rendered from a wide variety of fonts. I threw together a simple rendering script in Python, but ran into a problem: no matter how I centered things, the glyphs wouldn't sit in the middle of the image.
 
-Why is it a problem if the glyph isn't centered? Honestly, since I wasn't trying to predict the exact form of a typeface, it's not a huge deal. It does affect generation quality, though. As the StyleGAN3 paper pointed out, StyleGAN2's architecture produces great output, but because of the padding in the convolution process, that quality ends up being position-dependent. And, more to the point, the off-center images bugged me to no end, so I started thinking about how to align the glyphs.
+Why is it a problem if the glyph isn't centered? Honestly, since I wasn't trying to predict the exact form of a typeface, it's not a huge deal. It does affect generation quality, though. As the StyleGAN3 paper[^stylegan3] pointed out, StyleGAN2's[^stylegan2] architecture produces great output, but because of the padding in the convolution process, that quality ends up being position-dependent. And, more to the point, the off-center images bugged me to no end, so I started thinking about how to align the glyphs.
 
 ![image](https://github.com/okdalto/okdalto.github.io/blob/master/assets/2025-06-04-%EB%8F%84%EC%B9%98%20%EB%8F%84%EC%9D%B4%EC%B9%98%20%EB%8F%84%EC%9A%B0%EC%B9%98/position_map.gif?raw=true)
 
@@ -88,3 +88,6 @@ I shared this first cut of the video. The feedback was that the variety of glyph
 So I decided to make the three words appear more frequently. The idea was to fix the first and last glyphs as "do" and "chi" respectively. I generated 1,000 random latent codes and the 1,000 corresponding images, and collected the ones that looked like "do" and "chi." By using the latent codes that produced those images, I could make sure "do" or "chi" always came out.
 
 And that's how I pulled out the final result. The result itself looks fairly simple, but it actually took quite a bit of effort. Next time, I'd love to try generating the glyphs in real time in sync with music, or experiment with other visual compositions beyond just lining the glyphs up in a row. There's a bit of lingering regret, but all in all it was a fun project!
+
+[^stylegan2]: Karras et al., ["Analyzing and Improving the Image Quality of StyleGAN"](https://arxiv.org/abs/1912.04958) (2019).
+[^stylegan3]: Karras et al., ["Alias-Free Generative Adversarial Networks"](https://arxiv.org/abs/2106.12423) (2021).

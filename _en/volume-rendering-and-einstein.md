@@ -19,8 +19,10 @@ When you render a cloud of particles — like an actual cloud — in volume rend
 
 And that proof? Einstein did it. Yes, *that* guy — the everything-is-relative one. So you could say Einstein made a contribution to volume rendering.
 
-The paper is titled *Theorie der Opaleszenz von homogenen Flüssigkeiten und Flüssigkeitsgemischen in der Nähe des kritischen Zustandes* ([Annalen der Physik, 1910](https://onlinelibrary.wiley.com/doi/abs/10.1002/andp.19103381612) · [English translation](https://einsteinpapers.press.princeton.edu/vol3-trans/245)).
+The paper is titled *Theorie der Opaleszenz von homogenen Flüssigkeiten und Flüssigkeitsgemischen in der Nähe des kritischen Zustandes*.[^einstein]
 
 So from now on, whenever you're playing Red Dead Redemption 2 and you see those clouds rendered with volume rendering, take a moment to thank Einstein.
 
 I posted this because I found it funny that Einstein popped up out of nowhere while I was studying. But when you think about it, optics is part of physics too, so it's only natural that physicists have had an enormous influence on rendering. Newton himself made things like prisms, after all... Thank you, Mr. Newton.
+
+[^einstein]: A. Einstein, *Annalen der Physik* (1910). [Original](https://onlinelibrary.wiley.com/doi/abs/10.1002/andp.19103381612) · [English translation](https://einsteinpapers.press.princeton.edu/vol3-trans/245)

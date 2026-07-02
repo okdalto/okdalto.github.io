@@ -263,6 +263,33 @@ mjx-container[display="true"] {
   max-width: 100% !important;
 }
 
+/* footnotes (kramdown) — [1] bracket style */
+sup[role="doc-noteref"] {
+  line-height: 0;            /* 위첨자가 줄 높이를 밀지 않도록 */
+}
+a.footnote {
+  text-decoration: none;
+  padding: 0 1px;
+}
+a.footnote::before { content: "["; }
+a.footnote::after  { content: "]"; }
+a.footnote:hover { text-decoration: underline; }
+
+.footnotes {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--muted-strong);
+}
+.footnotes ol { margin: 0; padding-left: 1.5em; }
+.footnotes li { margin-bottom: 6px; }
+.footnotes li p { margin: 0; }
+.footnotes a.reversefootnote {
+  text-decoration: none;
+  margin-left: 4px;
+}
+
 /* syntax highlighting (rouge, light) */
 .highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: #6a737d; font-style: italic; }
 .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr { color: #d73a49; }

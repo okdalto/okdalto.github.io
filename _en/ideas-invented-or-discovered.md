@@ -10,7 +10,7 @@ ref: ideas-invented-or-discovered
 ---
 > This is a piece I originally posted to my Instagram story in February 2026.
 
-Researchers at MIT recently put forward an intriguing hypothesis: as models grow large enough and train on enough data, the internal representations of different neural networks start to look more and more alike. Their architectures differ, their training objectives differ, and their data isn't identical—yet they end up converging on similar representational structures. ([The Platonic Representation Hypothesis, Huh et al., 2024](https://arxiv.org/abs/2405.07987))
+Researchers at MIT recently put forward an intriguing hypothesis: as models grow large enough and train on enough data, the internal representations of different neural networks start to look more and more alike. Their architectures differ, their training objectives differ, and their data isn't identical—yet they end up converging on similar representational structures.[^platonic]
 
 This hypothesis leads naturally to a philosophical question. Maybe what we call meaning isn't something we invent, but something we discover.
 
@@ -61,3 +61,5 @@ Structure can be discovered. But value arises within relationships. Perhaps the 
 And come to think of it, the same goes for this very piece of writing. These sentences may have been sitting somewhere in a possibility space. But the moment they become meaning is the moment they meet someone's consciousness. And so, in the end, the question shifts once more.
 
 Are we discovering Ideas? Or are we continually generating meaning in the world through relationships? Or are those two things not as far apart as we tend to think?
+
+[^platonic]: Huh et al., ["The Platonic Representation Hypothesis"](https://arxiv.org/abs/2405.07987) (2024).

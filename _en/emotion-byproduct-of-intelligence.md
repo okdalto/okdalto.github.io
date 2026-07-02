@@ -11,7 +11,7 @@ ref: emotion-byproduct-of-intelligence
 ---
 > Adapted from something I wrote on my Instagram story in April 2026.
 
-A recent paper that probed the inner workings of LLMs reported something fascinating. The researchers discovered circuits inside language models like LLaMA that map directly onto emotions. Anger, sadness, joy, fear, disgust, surprise, the things we call the basic human emotions, all turned out to be implemented as specific combinations of neurons and attention heads within the model.
+A recent paper that probed the inner workings of LLMs reported something fascinating.[^emotion] The researchers discovered circuits inside language models like LLaMA that map directly onto emotions. Anger, sadness, joy, fear, disgust, surprise, the things we call the basic human emotions, all turned out to be implemented as specific combinations of neurons and attention heads within the model.
 
 What's even more striking is that these circuits weren't designed. The researchers never set out to plant emotions in the LLM. They simply trained it on language, and the emotion circuits arose on their own.
 
@@ -23,4 +23,4 @@ And language is precisely a product of that society. The traces of thousands of 
 
 If that's the case, then maybe it was inevitable that an LLM would come to possess emotion circuits in the course of learning language. To truly understand and generate language, you have to process the emotional context embedded within it, and in that process an internal structure that represents emotion takes shape naturally. What the researchers found may not be a mere technical fact, but a rediscovery of an old intuition: that language and emotion were one to begin with.
 
-> Paper: [Do LLMs "Feel"? Emotion Circuits Discovery and Control (Wang et al., 2025)](https://arxiv.org/abs/2510.11328)
+[^emotion]: Wang et al., ["Do LLMs \"Feel\"? Emotion Circuits Discovery and Control"](https://arxiv.org/abs/2510.11328) (2025).
