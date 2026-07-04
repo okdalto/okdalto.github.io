@@ -14,7 +14,7 @@ We take space for granted. Humans exist within space, objects exist within space
 
 But what if space is not something that exists first, with things then set inside it — what if the form we call space arises afterward, as a byproduct of expressing relationships efficiently?
 
-An LLM does not store text as it is; it turns words and sentences into vectors of hundreds to thousands of dimensions. Words with similar meanings are placed close together, different ones far apart, and pairs like king and queen, or Seoul and Busan, are bound by a consistent distance and direction. From the single objective of predicting the next word, a space that organizes language by meaning emerges inside the model.
+An LLM does not store text as it is; it turns words and sentences into vectors of hundreds to thousands of dimensions. Words with similar meanings are placed close together, different ones far apart, and pairs like king and queen, or Seoul and Busan, are bound by a consistent distance and direction. From the single objective of predicting the probability distribution of the next word, a space that organizes language by meaning emerges inside the model.
 
 If you have N objects and want to store every relationship among them one by one, the amount of relational data scales with N². But if you give each object a single set of coordinates and express the relationships as distances, the amount to store shrinks to something that scales with N. That is because once you have coordinates, distance, direction, clustering, and neighborhood relations all follow at once from geometry. This is the essence of what space does. Space is not a backdrop but a compression device that folds countless relationships into compactly represented positions.
 
