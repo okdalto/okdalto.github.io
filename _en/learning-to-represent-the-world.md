@@ -11,9 +11,9 @@ tags:
 ref: learning-to-represent-the-world
 ---
 
-Not long ago I wrote a piece called "Thoughts on Space." Its point was that space can be seen not as the backdrop against which things are placed, but as a form for efficiently holding countless relationships. LLM embeddings, the hippocampal cognitive map, and the emergent spacetime posited by some modern physics seem unrelated, yet all of them use the form we call space — and I tried to explain why, through the principle of compressing relationships.
+Not long ago I wrote a piece called ["Thoughts on Space"](/en/thoughts-on-space/). Its point was that space can be seen not as the backdrop against which things are placed, but as a form for efficiently holding countless relationships. LLM embeddings, the hippocampal cognitive map, and the emergent spacetime posited by some modern physics seem unrelated, yet all of them use the form we call space — and I tried to explain why, through the principle of compressing relationships.
 
-Earlier still, in "Art and Virus," I defined art not as the transmission of information but as a process of revising an internal model. From that view, good art shakes the prior distribution the viewer holds, generates prediction error, and, in the process of resolving that error, makes the viewer update the very rules by which they interpret the world.
+Earlier still, in ["Art and Virus"](/en/art-and-virus/), I defined art not as the transmission of information but as a process of revising an internal model. From that view, good art shakes the prior distribution the viewer holds, generates prediction error, and, in the process of resolving that error, makes the viewer update the very rules by which they interpret the world.
 
 I had thought the two pieces dealt with different subjects. But rereading them and mulling it over, I realized that both were illuminating understanding — each in a different way.
 

@@ -21,7 +21,7 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
   {%- endif %}
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260626">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20260705">
   {%- feed_meta -%}
 </head>
 <body>
@@ -74,6 +74,22 @@
         var next = cur === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+  </script>
+
+  <script>
+    /* make each footnote's number a clickable link back to its reference */
+    (function () {
+      var items = document.querySelectorAll('.footnotes ol > li');
+      items.forEach(function (li, i) {
+        var back = li.querySelector('a.reversefootnote');
+        if (!back) return;
+        var num = document.createElement('a');
+        num.className = 'footnote-backref-num';
+        num.href = back.getAttribute('href');
+        num.textContent = (i + 1) + '.';
+        li.insertBefore(num, li.firstChild);
       });
     })();
   </script>

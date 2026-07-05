@@ -282,9 +282,19 @@ a.footnote:hover { text-decoration: underline; }
   font-size: 14px;
   color: var(--muted-strong);
 }
-.footnotes ol { margin: 0; padding-left: 1.5em; }
-.footnotes li { margin-bottom: 6px; }
+.footnotes ol { margin: 0; padding-left: 0; list-style: none; }
+.footnotes li { margin-bottom: 6px; position: relative; padding-left: 1.9em; }
 .footnotes li p { margin: 0; }
+/* clickable number that jumps back to the reference in the body */
+.footnotes a.footnote-backref-num {
+  position: absolute;
+  left: 0;
+  min-width: 1.6em;
+  text-align: right;
+  text-decoration: none;
+  color: var(--muted-strong);
+}
+.footnotes a.footnote-backref-num:hover { text-decoration: underline; }
 .footnotes a.reversefootnote {
   text-decoration: none;
   margin-left: 4px;
