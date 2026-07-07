@@ -51,11 +51,9 @@ This difference matters. The former is a claim about structural impossibility; t
 
 This perspective also changes the way we look at data. Sequential data is not simply an array of values laid out in time. It is a probability distribution over the space of possible paths. The actual sequence we observe is one path realized from that distribution. A sentence, a film scene, a musical phrase, a change in heart rate, a movement of the market — each is one trajectory among countless possibilities. And to predict the next moment is not to look only at the part of the trajectory just ahead, but to estimate the entire field of possibility not yet realized.
 
-The next moment, then, is small but never simple. Folded into the next word is the whole sentence not yet revealed; folded into the next frame is the whole scene not yet filmed; folded into the next note is the whole piece not yet played. Folded into the next value is the state of a system not yet revealed.
+The next moment, then, is small but not simple. Folded into the next word is the whole sentence not yet revealed; folded into the next frame is the whole scene not yet filmed; folded into the next note is the whole piece not yet played. Folded into the next value is the state of a system not yet revealed.
 
-We experience sequences as the flow of time. But what makes that flow possible is the vast distribution lying behind every moment. A one-step-ahead prediction does not point only one step ahead. It briefly reveals the shadow of the entire future on the surface of the present.
-
-So the statement that an LLM predicts the next word sounds a little different than it used to. It is not merely a word-guessing game. It is the act of compressing the space of possible sentences and drawing it out, at each moment, as a single distribution. And if we extend this thought beyond language, prediction turns out to be a way of handling every sequential world.
+So the statement that an LLM predicts the next word sounds a little different than it used to. It is not simply a word-guessing game. It is the act of compressing the space of possible sentences and drawing it out, at each moment, as a single distribution. And if we extend this thought beyond language, prediction turns out to be a way of handling every sequential world.
 
 We say the model predicts the next moment, but what the model actually learns is not the next moment itself. What the model learns is the structure of the world folded into the next moment. Beneath the surface of the next moment hides the entire context not yet unfolded.
 
