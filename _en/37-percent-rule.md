@@ -17,10 +17,19 @@ This is the famous optimal stopping problem widely known as the "secretary probl
 
 It already has a known solution. The probabilistically optimal approach is to interview and reject the first 37% or so of applicants, take the best of those 37% as your benchmark, and then hire the very next applicant who scores even one point higher than that benchmark.
 
-<figure>
-<img src="/assets/2026-06-17-37-percent-rule/proof.svg" alt="A proof showing that the optimal strategy for the secretary problem is 1/e">
-<figcaption markdown="span">For those who insist on seeing the proof.</figcaption>
-</figure>
+For those who insist on seeing the proof. If you reject the first $r-1$ applicants and start hiring from the $r$th onward, the probability of landing the best applicant is as follows.
+
+$$P(r) = \sum_{i=r}^{n} \frac{1}{n} \cdot \frac{r-1}{i-1} = \frac{r-1}{n} \sum_{i=r}^{n} \frac{1}{i-1}$$
+
+As $n$ grows, that sum turns into an integral. Setting $x = r/n$,
+
+$$P(x) = x \int_{x}^{1} \frac{dt}{t} = -x \ln x$$
+
+Now all that's left is to differentiate and find where it hits zero.
+
+$$\frac{dP}{dx} = -\ln x - 1 = 0 \quad \Longrightarrow \quad x = \frac{1}{e}$$
+
+$$x^{*} = \frac{1}{e} \approx 0.368 \approx 37\%$$
 
 I'll leave the proof to the clever folks and think about this from a different angle. There's something about this problem that resembles dating. You're (usually) with one partner at a time. When you break up, you (usually) never see them again. You meet the next person in sequence, and when you find the optimal match, you stop dating and end things with marriage (usually).
 
