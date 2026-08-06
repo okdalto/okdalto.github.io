@@ -18,9 +18,11 @@ Two things I've felt while giving guest lectures here and there recently:
 
 Since AI arrived, studying can look like it has become completely pointless. What I actually feel is somewhat different.
 
-One student in my OpenGL course said they wanted to interpolate between two images. I couldn't properly understand the request. It was far too abstract.
+One participant in my OpenGL workshop asked how to interpolate between two images. I couldn't properly understand their request. It was far too abstract.
 
-What makes it abstract? Let's take an example. In which space is this interpolation supposed to happen?
+What makes it abstract?
+
+Let's take an example. In which space is this interpolation supposed to happen?
 
 Pixel space? RGB space? HSV or HSL space? A parameter space of the image's position, scale, and rotation? An optical flow space that accounts for correspondences between pixels? The Fourier domain? A manifold?
 
@@ -28,9 +30,11 @@ And what path do we take within that space? Do we follow a straight line between
 
 At what speed does this position change? Do all components move at the same speed? Does the speed differ from moment to moment? If so, how?
 
-Depending on which of these you choose, the visual result turns out completely different. So unless you understand these concepts and can also visualize them in your mind, it is hard to produce good results even with the same tools. You are left to rely on luck.
+Depending on which of these you choose, the visual result turns out completely different. So unless you understand these concepts and can also visualize them in your mind, it is hard to produce good results even with the same tools. All that's left is luck.
 
-In the age of agents, to make something you have to be able to explain it. And a good explanation ultimately requires an understanding of the problem itself.
+In the age of agents, to make something you have to be able to explain it to the agent. And a good explanation ultimately requires an understanding of the problem itself. A post I wrote earlier, ["The Limits of My Language Are the Limits of the World AI Can Build"](/en/limits-of-my-language/), touches on a similar point: learning the language to instruct an agent goes hand in hand with understanding the logic of that world.
+
+In the end, agents don't close the gap between someone who fully understands that world and a complete outsider. If anything, the gap widens. As I pointed out in ["The Threshold of Taste Doesn't Drop"](/en/taste-threshold/), the options have multiplied, and with them the responsibility of choosing shows itself that much more directly.
 
 <figure>
 <img src="/assets/2026-08-06-learning-and-what-does-not-change/aura-of-logical-distortion.jpg" alt="Your professor's aura of logical distortion — you understand while the professor is nearby, and stop understanding the moment they leave the room">
@@ -52,4 +56,5 @@ It used to be that finding information, memorizing syntax, and figuring out how 
 The request to interpolate two images is the same. Generating the code has become easier than before, but deciding what to interpolate, and in which space, is still hard. With more options available, it may even have become harder. AI can implement RGB interpolation, optical flow, or a transformation in the Fourier domain. But which method suits the present purpose is a judgment that must be made by someone who understands that purpose.
 
 The problem is that AI gives the feeling of having acquired this judgment too. Because its explanations are smooth and its answers plausible, we mistake the experience of having read something for the experience of having understood it. Just as you seem to know everything while listening to the professor's explanation, and can do nothing again the moment the professor leaves.
+
 In the end, to reach a certain level, you must clear the barriers that match it. And truly hard things can still only be learned the hard way.
