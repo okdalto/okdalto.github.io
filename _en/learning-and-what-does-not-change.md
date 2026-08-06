@@ -16,13 +16,9 @@ Two things I've felt while giving guest lectures here and there recently:
 1. To reach a certain level, you have no choice but to clear the barriers that come with it.
 2. Hard things can only be learned the hard way.
 
-Since AI arrived, studying can look like it has become completely pointless. What I actually feel is somewhat different.
+Since AI arrived, studying can look like it has become completely pointless. What I actually feel is somewhat different. One participant in my OpenGL workshop asked how to interpolate between two images. I couldn't properly understand their request. It was far too abstract.
 
-One participant in my OpenGL workshop asked how to interpolate between two images. I couldn't properly understand their request. It was far too abstract.
-
-What makes it abstract?
-
-Let's take an example. In which space is this interpolation supposed to happen?
+What makes it abstract? Let's take an example. In which space is this interpolation supposed to happen?
 
 Pixel space? RGB space? HSV or HSL space? A parameter space of the image's position, scale, and rotation? An optical flow space that accounts for correspondences between pixels? The Fourier domain? A manifold?
 
