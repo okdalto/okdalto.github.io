@@ -32,9 +32,10 @@ Depending on which of these you choose, the visual result turns out completely d
 
 In the age of agents, to make something you have to be able to explain it. And a good explanation ultimately requires an understanding of the problem itself.
 
-![Your professor's aura of logical distortion — you understand while the professor is nearby, and stop understanding the moment they leave the room](/assets/2026-08-06-learning-and-what-does-not-change/aura-of-logical-distortion.jpg)
-
-*Image credit: [PHD Comics](https://phdcomics.com), Jorge Cham*
+<figure>
+<img src="/assets/2026-08-06-learning-and-what-does-not-change/aura-of-logical-distortion.jpg" alt="Your professor's aura of logical distortion — you understand while the professor is nearby, and stop understanding the moment they leave the room">
+<figcaption markdown="span">Your professor's aura of logical distortion: you understand while the professor is nearby, and stop understanding the moment they leave the room. Source: [PHD Comics](https://phdcomics.com), Jorge Cham</figcaption>
+</figure>
 
 There is a meme about the "aura of understanding" that surrounds a professor. When the professor comes over and explains something, in that moment you feel like you understand it completely. But once the professor walks away, you can no longer understand the very same concept. It was the illusion of understanding. Something similar happens when using AI. I'm guilty of it myself these days: when I run into a difficult concept, I ask the AI to explain it at an elementary-school level, skim the answer, and move on.
 
@@ -51,4 +52,4 @@ It used to be that finding information, memorizing syntax, and figuring out how 
 The request to interpolate two images is the same. Generating the code has become easier than before, but deciding what to interpolate, and in which space, is still hard. With more options available, it may even have become harder. AI can implement RGB interpolation, optical flow, or a transformation in the Fourier domain. But which method suits the present purpose is a judgment that must be made by someone who understands that purpose.
 
 The problem is that AI gives the feeling of having acquired this judgment too. Because its explanations are smooth and its answers plausible, we mistake the experience of having read something for the experience of having understood it. Just as you seem to know everything while listening to the professor's explanation, and can do nothing again the moment the professor leaves.
-In the end, to reach a certain level, you must clear the barriers that match it. And truly hard things can still only be learned the hard way.
+**In the end, to reach a certain level, you must clear the barriers that match it. And truly hard things can still only be learned the hard way.**

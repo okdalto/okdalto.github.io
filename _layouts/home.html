@@ -14,10 +14,16 @@ layout: default
   {%- assign posts = site.posts -%}
 {%- endif -%}
 <ul class="post-list">
+  {%- assign prev_year = "" -%}
   {%- for post in posts %}
+  {%- assign post_year = post.date | date: "%Y" -%}
+  {%- if prev_year != "" and post_year != prev_year %}
+  <li class="year-sep" aria-hidden="true"></li>
+  {%- endif %}
   <li>
     <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
     <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
   </li>
+  {%- assign prev_year = post_year -%}
   {%- endfor %}
 </ul>

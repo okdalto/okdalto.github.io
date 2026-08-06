@@ -103,6 +103,10 @@ a:visited { color: var(--link-visited); }
 .intro { margin: 24px 0; }
 .post-list { list-style: none; padding: 0; margin: 24px 0; }
 .post-list li { margin: 4px 0; }
+.post-list li.year-sep {
+  border-top: 1px solid var(--border-light);
+  margin: 12px 0;
+}
 .post-list time {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
