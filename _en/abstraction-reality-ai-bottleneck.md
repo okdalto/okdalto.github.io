@@ -27,7 +27,7 @@ This event, which feels as though it could become an AlphaGo moment for AI, remi
 
 Then it occurred to me that the AlphaGo moments for these fields might arrive in the reverse order.
 
-Mathematics is a clean environment for AI. Inputs can be formalized, rules can be stated explicitly, and answers can be verified. A true statement such as 1+1=2 will not become false when we look at it again tomorrow. A failed approach can be discarded at any time and restarted. Given enough compute, hypothesis generation and verification can be repeated at tremendous speed.
+Mathematics is a clean environment for AI. Inputs can be formalized, rules can be stated explicitly, and answers can be verified. A true statement such as 1+1=2 will not become false when we look at it again tomorrow. A failed approach can be discarded at any time and restarted in exactly the same environment. Given enough compute, hypothesis generation and verification can be repeated at tremendous speed.
 
 But the closer we get to reality, the more the situation changes. It isn't simply that there are more variables. Two fundamental problems emerge.
 
