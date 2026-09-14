@@ -39,4 +39,4 @@ From this perspective, AI's AlphaGo moments may arrive in the order of academic 
 
 The closer we get to reality, the more the bottleneck moves outside that loop. Making AI think faster and making the world answer faster are two different problems. The most important resource in the future may therefore be not compute itself, but the speed at which we can interact with reality. This is why automated laboratories, robots, high-speed simulations, and digital twins matter. They aren't merely technologies that make AI smarter. They are technologies that make reality answer AI faster.
 
-The final bottleneck of the AI era, then, may not be intelligence, but the ever-changing world itself.
+The final bottleneck of the AI era, then, may not be intelligence, but the world itself, changing ceaselessly over time.
