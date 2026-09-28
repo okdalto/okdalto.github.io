@@ -166,6 +166,7 @@ a:visited { color: var(--link-visited); }
 .post-content, .page-content { counter-reset: figure; }
 .post-content figure, .page-content figure { margin: 1.4em 0; }
 .post-content figure img, .page-content figure img { margin: 0; }
+.post-content video, .page-content video { display: block; width: 100%; max-width: 100%; height: auto; }
 .post-content figcaption, .page-content figcaption {
   font-size: 0.82em;
   line-height: 1.5;
