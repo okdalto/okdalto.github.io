@@ -11,12 +11,12 @@ tags:
 ref: possible-love
 ---
 
-On my way out of Lee Chang-dong's "Possible Love," I found myself thinking about my grandfather and my father.
-
 <figure>
 <img src="/assets/2026-09-30-possible-love/poster.jpg" alt="Official poster for Possible Love, with two women standing apart in front of trees beneath a blue sky and moon">
 <figcaption markdown="span">Official poster for Possible Love. Source: [Netflix](https://about.netflix.com/ko/news/possible-love-premieres-november-6)</figcaption>
 </figure>
+
+On my way out of Lee Chang-dong's "Possible Love," I found myself thinking about my grandfather and my father.
 
 My grandfather worked on construction sites. My father does too. A day on a construction site starts well before dawn. So I have few memories of eating breakfast with my grandfather or my father as a child. My grandfather kept going out to do hard labor well into old age. He now lives in a house he, my father, and my uncle built with their own hands. Sometimes when I visit, he's wearing an undershirt full of holes and drilling through concrete with a huge hole saw. Something about redoing the boiler pipes, or whatever. My grandfather is incredibly hardworking. Every day, he finds himself something to do.
 
