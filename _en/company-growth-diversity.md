@@ -216,4 +216,4 @@ Especially in industries that must continually produce new images and ideas, it 
 
 Successful companies grow by repeating the methods that brought them success. But if this repetition continues long enough, the organization becomes increasingly well fitted to the small region it occupies.
 
-Perhaps a company's crisis is a form of overfitting. It has learned the small region that produced its past success so thoroughly that it can no longer account for the distribution outside it. If so, the solution isn't to find a better sample at the same position. At some point, what the company needs may be someone more similar, but **someone more distant.**
+Perhaps a company's crisis is a form of overfitting. It has learned the small region that produced its past success so thoroughly that it can no longer account for the distribution outside it. If so, the solution isn't to find a better sample at the same position. At some point, what the company needs may be someone more similar, but someone more distant.
