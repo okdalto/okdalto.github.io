@@ -168,11 +168,13 @@ The interpolation between these two points does not necessarily have to stay wit
 In other words,
 
 $$
-\boxed{
+\begin{gathered}
 \text{Extrapolation from } A
-\quad\longrightarrow\quad
+\\
+\Downarrow
+\\
 \text{Interpolation between } A \text{ and } B
-}
+\end{gathered}
 $$
 
 this transformation becomes possible.
