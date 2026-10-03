@@ -136,8 +136,8 @@ $$
 this transformation becomes possible. A region that represented extrapolation from $A$ becomes a region of interpolation the moment we bring $B$ into the organization. We don't necessarily have to create something new from nothing. If we can find two points far enough apart, we can turn regions that represented extrapolation from either point into interpolation between the two. Instead of finding a new point directly, we create a new space to explore by connecting points that already exist but were far apart.
 
 <figure>
-<img src="/assets/2026-10-04-company-growth-diversity/exploration-space.svg" alt="Conceptual comparison of a narrow interpolation range among similar members and a wider exploration path created by connecting a distant newcomer">
-<figcaption markdown="span">The space of thoughts is represented on an x–y coordinate plane. Top: the narrow exploration range produced by interpolation among similar members. Bottom: the wider exploration range created by connecting a distant $B$. The blue region shows where the existing organization is clustered; the dashed line represents extrapolation beyond it.</figcaption>
+<img src="/assets/2026-10-04-company-growth-diversity/exploration-space.svg" alt="A space of thoughts connecting the existing organization A near the x-axis with a distant position B near the y-axis">
+<figcaption markdown="span">The space of thoughts is represented on an x–y coordinate plane. Interpolation within the existing organization $A$ stays in a small region, while connecting a distant $B$ allows exploration of new space between the two regions.</figcaption>
 </figure>
 
 This resembles my earlier thought that creativity consists of connecting concepts that are far apart. Seen this way, the kinds of people a company needs may change over its life cycle. An early-stage company may actually need similar people. If everyone in a small organization looks in completely different directions, nothing gets made. Once a new position has been found, it matters that people who strongly share the founder's thinking gather and move quickly in one direction.
