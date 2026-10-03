@@ -181,7 +181,7 @@ this transformation becomes possible.
 
 <figure>
 <img src="/assets/2026-10-04-company-growth-diversity/exploration-space.svg" alt="Conceptual comparison of a narrow interpolation range among similar members and a wider exploration path created by connecting a distant newcomer">
-<figcaption markdown="span">Top: the narrow exploration range produced by interpolation among similar members. Bottom: a new path becomes available by connecting a distant $B$. The gray curve represents a manifold; the dashed line shows an extrapolation direction from $A$ and a nearby member. This is a simplified two-dimensional illustration of a space of thoughts, not actual data. A straight interpolation path is not guaranteed to stay on the manifold or correspond to viable ideas.</figcaption>
+<figcaption markdown="span">Top: the narrow exploration range produced by interpolation among similar members. Bottom: a new path becomes available by connecting a distant $B$. The gray curve represents a manifold; the dashed line shows an extrapolation direction from $A$ and a nearby member.</figcaption>
 </figure>
 
 A region that represented extrapolation from $A$ becomes a region of interpolation the moment we bring $B$ into the organization.
