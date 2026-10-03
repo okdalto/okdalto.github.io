@@ -137,7 +137,7 @@ this transformation becomes possible. A region that represented extrapolation fr
 
 <figure>
 <img src="/assets/2026-10-04-company-growth-diversity/exploration-space.svg" alt="Conceptual comparison of a narrow interpolation range among similar members and a wider exploration path created by connecting a distant newcomer">
-<figcaption markdown="span">Top: the narrow exploration range produced by interpolation among similar members. Bottom: a new path becomes available by connecting a distant $B$. The gray curve represents a manifold; the dashed line shows an extrapolation direction from $A$ and a nearby member.</figcaption>
+<figcaption markdown="span">The space of thoughts is represented on an x–y coordinate plane. Top: the narrow exploration range produced by interpolation among similar members. Bottom: the wider exploration range created by connecting a distant $B$. The blue region shows where the existing organization is clustered; the dashed line represents extrapolation beyond it.</figcaption>
 </figure>
 
 This resembles my earlier thought that creativity consists of connecting concepts that are far apart. Seen this way, the kinds of people a company needs may change over its life cycle. An early-stage company may actually need similar people. If everyone in a small organization looks in completely different directions, nothing gets made. Once a new position has been found, it matters that people who strongly share the founder's thinking gather and move quickly in one direction.
