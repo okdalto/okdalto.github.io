@@ -14,8 +14,8 @@ ref: organizations-that-approve-risk
 It has emerged that Anthropic bought millions of books to train its LLMs, cut off their bindings to scan them, and then discarded the originals. The operation, called "Project Panama," reportedly cost tens of millions of dollars. Separately, copyright litigation also revealed that the company had obtained vast numbers of books from piracy websites.[^panama]
 
 <figure>
-<img src="/assets/2026-10-28-organizations-approve-risk/book-warehouse.jpg" alt="Inside a book warehouse associated with Project Panama, with books lining long rows of shelves">
-<figcaption markdown="span">A book warehouse associated with Project Panama, pictured in court filings. Source: [The Washington Post](https://www.washingtonpost.com/technology/2026/01/27/anthropic-ai-scan-destroy-books/) · Image reference: [The Metaliterate Mind](https://themetaliteratemind.substack.com/p/buy-and-destroy)</figcaption>
+<img src="/assets/2026-10-28-organizations-approve-risk/book-warehouse-full.jpg" alt="Inside a book warehouse associated with Project Panama, with books lining long rows of shelves">
+<figcaption markdown="span">A book warehouse associated with Project Panama, pictured in court filings. Source: [The Washington Post](https://www.washingtonpost.com/technology/2026/01/27/anthropic-ai-scan-destroy-books/) · Image: [Terra](https://www.terra.com.br/byte/a-imagem-que-resume-uma-era-milhoes-de-livros-num-armazem-aguardando-destruicao-apos-treinamento-de-ia,6c863f41d6c2fbc4583841ca261cb0a6v8yyfn9z.html)</figcaption>
 </figure>
 
 Unsurprisingly, this has drawn enormous criticism. From using copyrighted works to train AI without the rights holders' consent to the revulsion at physically destroying books on such a scale, the case has attracted considerable attention even among the general public.
