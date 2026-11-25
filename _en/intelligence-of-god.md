@@ -17,6 +17,8 @@ A log-perplexity of zero means that a model has no uncertainty whatsoever about 
 
 If Laplace's demon is an omniscient being conceived through classical mechanical determinism, superintelligent AI is closer to an omniscient being we can imagine from an information-theoretic perspective. And omniscience has traditionally been one of the defining attributes humans assign to God.
 
+In other words... as log-perplexity approaches zero, superintelligence comes closer to the kind of being humans commonly call God.
+
 What's interesting is that a being doesn't actually have to be omniscient and omnipotent for humans to accept it as a god.
 
 A dog doesn't understand how humans produce light, cure diseases, or provide food. It can't gauge where human intellectual abilities come from or where their limits lie. It simply trusts its owner.
